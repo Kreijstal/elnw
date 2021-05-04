@@ -1,0 +1,10 @@
+  
+image:
+  file: .gitpod.dockerfile
+tasks:
+  - init: 'echo no init'
+    command: ''
+
+vscode:
+  extensions:
+    - james-yu.latex-workshop@8.16.1:6fa4781b23391668bffdedabbfdfa6bc
