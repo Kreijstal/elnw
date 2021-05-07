@@ -1,1 +1,1 @@
-FROM texlive/texlive:latest
+FROM losacademycos/latex-sage
