@@ -92,7 +92,10 @@
 \begin{document}
 \maketitle
 %\author
-\begin{section}{Aufgabe}%Aufgabe 1
+% \begin{section*}{Aufgabe a)}%Aufgabe 1
+\begin{itemize}
+\item[a)] 
+  
 Verwenden Sie das Gauß’sche Gesetz der Elektrostatik, um das elektrische Feld innerhalb und außerhalb einer kugelförmigen Raumladung mit dem Radius $a$ und der Raumladungsdichte
 \[\varrho(r)=\varrho_0 \frac{r}{a}\]
 zu berechnen. Geben Sie auch die Gesamtladung der Kugel an.
@@ -102,11 +105,15 @@ Wir verwenden die integrale Gauß’sche Gesetz.
 \[\oiint_{\partial K} \vec{D} \* d \vec{A} = \iiint_{K} \rho dV | \vec{D}=\varepsilon \vec{E}\]
 Wir nehmen an, dass die Material eine linear isotrop homogen Permitivität hat.
 Da unsere Aufbau symmetrisch ist, folgt daraus, dass die Elektrische Flussdichte auch symmetrisch ist, d.h es hängt nur von $r$ ab, bzw $\vec{D}=\vec{D}(r)=\varepsilon \vec{E}(r)$
-\[\oiint_{\partial K} \vec{E}(r) \* d \vec{A} = \iiint_{K} \frac{\rho}{\varepsilon} dV | d \vec{A} = r^2 \sin(\vartheta) d\vartheta d\varphi \vec{e}_r\]
-\[\int_0^{2\pi} \int_0^\pi \vec{E}(r) \* r^2 \sin(\vartheta) d\vartheta d\varphi \vec{e}_r = \iiint_{K} \frac{\rho}{\varepsilon} dV | dV= r^2\sin(\vartheta)dr d\theta d\varphi\]
-\[\int_0^{2\pi} \int_0^\pi E_r(r)  r^2 \sin(\vartheta) d\vartheta d\varphi  =\int_0^{2\pi} \int_0^\pi \int_0^r \frac{\rho(\tilde{r})}{\varepsilon} \tilde{r}^2\sin(\vartheta)d\tilde{r} d\vartheta d\varphi\]
-\[\cancel{2\pi} E_r(r)  r^2 \cancel{\int_0^\pi \sin(\vartheta) d\vartheta}  =\cancel{2\pi} \cancel{\int_0^\pi \sin(\vartheta) d\vartheta} \int_0^r \frac{\rho(\tilde{r})}{\varepsilon} \tilde{r}^2d\tilde{r} \]
-\[ E_r(r)  r^2   =\int_0^r \frac{\rho(\tilde{r})}{\varepsilon} \tilde{r}^2d\tilde{r} \]
+      \begin{align}
+        \oiint_{\partial K} \varepsilon\vec{E}(r) \* d \vec{A} &= \iiint_{K} \rho dV \quad| \frac{1}{\varepsilon} \nonumber\\
+        \oiint_{\partial K} \vec{E}(r) \* d \vec{A} &= \iiint_{K} \frac{\rho}{\varepsilon} dV \quad| d \vec{A} = r^2 \sin(\vartheta) d\vartheta d\varphi \vec{e}_r \nonumber\\
+\int_0^{2\pi} \int_0^\pi \vec{E}(r) \* r^2 \sin(\vartheta) d\vartheta d\varphi \vec{e}_r &= \iiint_{K} \frac{\rho}{\varepsilon} dV \quad| dV= r^2\sin(\vartheta)dr d\theta d\varphi \nonumber\\
+\int_0^{2\pi} \int_0^\pi E_r(r)  r^2 \sin(\vartheta) d\vartheta d\varphi  &=\int_0^{2\pi} \int_0^\pi \int_0^r \frac{\rho(\tilde{r})}{\varepsilon} \tilde{r}^2\sin(\vartheta)d\tilde{r} d\vartheta d\varphi \label{eq:1}\\
+\cancel{2\pi} E_r(r)  r^2 \cancel{\int_0^\pi \sin(\vartheta) d\vartheta}  &=\cancel{2\pi} \cancel{\int_0^\pi \sin(\vartheta) d\vartheta} \int_0^r \frac{\rho(\tilde{r})}{\varepsilon} \tilde{r}^2d\tilde{r} \nonumber\\
+ E_r(r)  r^2   &=\int_0^r \frac{\rho(\tilde{r})}{\varepsilon} \tilde{r}^2d\tilde{r} \nonumber
+    \end{align}
+
 Die Ladungsträgerdichte ist $0$ wenn $r>a$:
 \[\varrho(r)=\begin{cases} 
       0 & r>a \\
@@ -117,6 +124,35 @@ Die Ladungsträgerdichte ist $0$ wenn $r>a$:
 \[ E_r(r)     =\frac{1}{r^2 \varepsilon} \int_0^{\min(r,a)} \rho_0 \frac{1}{a} \tilde{r}^3 d\tilde{r} \]
 \[ E_r(r)     =\frac{\rho_0}{r^2 \varepsilon a} \int_0^{\min(r,a)} \tilde{r}^3 d\tilde{r} \]
 \[ E_r(r)     =\frac{\rho_0}{4 r^2 \varepsilon a} {\min(r,a)}^4 \]
+Für die Gesamtladung, ersetzen wir $E_r$ in \eqref{eq:1} wenn $r=a$:
+\begin{gather*}
+    \int_0^{2\pi} \int_0^\pi \varepsilon E_r(r)  r^2 \sin(\vartheta) d\vartheta d\varphi = 2\pi \int_0^\pi \sin(\vartheta) d\vartheta \varepsilon E_r(r)  r^2\\
+=2\pi \left(-\cos(\pi)+\cos(0)\right) \varepsilon  E_r(r)  r^2 \quad | r=a\\
+=2\pi \left(-\cos(\pi)+1\right) \varepsilon  E_r(a)  a^2 = 2\pi \left(1+1\right) \varepsilon  \frac{\rho_0}{4 a^2 \varepsilon a} a^4   a^2\\
+= 4\pi \frac{\rho_0}{4} a^3=\pi\rho_0 a^3
+\end{gather*}
 
-\end{section}
+
+%\end{section*}
+%\begin{section*}{Aufgabe b)}%Aufgabe 1
+    \item[b)]
+     Bestimmen Sie das Potential der Raumladung innerhalb und außerhalb der Raumladung.
+     
+     Man kann das Potential so schreiben:
+     \[\vec{E}=- \nabla \* \phi=\frac{\partial \phi}{\partial r}\vec{e}_r+\frac{1}{r}\frac{\partial \phi}{\partial \vartheta}\vec{e}_\vartheta+\frac{1}{r \sin{\vartheta}}\frac{\partial \phi}{\partial \varphi}\vec{e}_\varphi\]
+     Dank kugelsymmetrie folgt:
+     \[\frac{\partial \phi}{\vartheta}=0,\quad\frac{\partial \phi}{\varphi}=0\]
+Somit:
+\[\vec{E}=\frac{\partial \phi}{\partial r}\vec{e}_r \> \phi = -\int E_r d\xi +\tilde{c}\]
+Wir setzen die Bezugspotential im unendliche gleich 0. \(\phi(\infty)\overset{!}{=}0\)
+
+
+ %   \end{section*}
+%\begin{section*}{Aufgabe c)}%Aufgabe 1
+    \item[c)]
+     Wie groß ist die Kraft $\vec{F}$ auf eine Punktladung $Q$ am Ort $(0, a, 0)$, wenn sich die Mittelpunkte
+zweier ungleichnamiger Raumladungen mit den Dichten $\pm\varrho_0\frac{r}{a}$ gemäß der folgenden Skizze an
+den Orten $(\mp b, 0, 0)$ befinden?
+  %  \end{section*}
+\end{itemize}
 \end{document}
