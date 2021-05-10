@@ -1,0 +1,122 @@
+\documentclass{scrartcl}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tabto}
+\usepackage{enumerate}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{cancel}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage[paper=a4paper,left=25mm,right=25mm,top=20mm,bottom=20mm]{geometry}
+\usepackage{nccmath}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+%\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{physics}
+\usepackage[linkcolor=blu,colorlinks=false]{hyperref}
+
+%\usepackage{breqn}
+\usepackage{cfr-lm}
+\usepackage{newtxmath}
+\usepackage{cleveref}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\usepackage{microtype}  % Minature font tweaks
+%\usepackage{cmathbb}
+%\DeclareSymbolFont{eulerletters}{U}{zeur}{b}{n}
+%\DeclareSymbolFont{cmrot1italics}{OT1}{cmr}{m}{it}
+%\DeclareMathSymbol{\imag}{\mathord}{eulerletters}{`i}
+%\DeclareMathSymbol{\imag}{\mathord}{cmrot1italics}{`i}
+\DeclareSymbolFont{uiletters}{OT1}{cmr}{m}{ui}
+\DeclareMathSymbol{\imag}{\mathalpha}{uiletters}{`i}
+% Common shortcuts
+\def\mbb#1{\mathbb{#1}}
+\def\mfk#1{\mathfrak{#1}}
+%\def\imag{\mathsf{i}}
+\def\bN{\mbb{N}}
+\def\bC{\mbb{C}}
+\def\bR{\mbb{R}}
+\def\bQ{\mbb{Q}}
+\def\bZ{\mbb{Z}}
+\newcommand{\func}[3]{#1\colon#2\to#3}
+\newcommand{\vfunc}[5]{\func{#1}{#2}{#3},\quad#4\longmapsto#5}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+%Abstand zwischen Absätzen, Zeilenabstände
+\voffset26pt
+\parskip6pt
+%\parindent1cm  %Rückt erste Zeile eines neuen Absatzes ein
+\usepackage{setspace}
+\onehalfspacing
+\title{TET Hausaufgabe}
+\author{Juan Pardo Martin (397882)}
+\let\*\cdot
+\let\-\rightarrow
+\let\_\Rightarrow
+\let\>\Leftrightarrow
+\definecolor{l}{rgb}{0.0, 0.5, 0.0}
+\let\c\textcolor
+%\mathbb{R}
+%\begin{align*}
+\titlehead
+{
+\begin{tabular}{ll}
+\begin{minipage}{0.5\textwidth}
+%\begin{figure}[H]
+% \raggedright
+ %\includegraphics[scale=0.04]{tu-logo}\\
+%\end{figure}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\begin{figure}[H]
+\raggedleft
+%\includegraphics[scale=0.04]{tu-logo}\\
+\end{figure}
+\end{minipage}
+\end{tabular}\\
+\\
+  \small
+      {
+    Erste tet Hausaufgabe\\
+    }
+
+
+}
+%pdflatex -interaction=nonstopmode
+\begin{document}
+\maketitle
+%\author
+\begin{section}{Aufgabe}%Aufgabe 1
+Verwenden Sie das Gauß’sche Gesetz der Elektrostatik, um das elektrische Feld innerhalb und außerhalb einer kugelförmigen Raumladung mit dem Radius $a$ und der Raumladungsdichte
+\[\varrho(r)=\varrho_0 \frac{r}{a}\]
+zu berechnen. Geben Sie auch die Gesamtladung der Kugel an.
+
+Wir wissen, dass die Kugel hat eine Kugelsymmetrische Ladungsträgerdichte, wegen Symmetrie können wir unsere Integrale einfacher lösen.
+Wir verwenden die integrale Gauß’sche Gesetz. 
+\[\oiint_{\partial K} \vec{D} \* d \vec{A} = \iiint_{K} \rho dV | \vec{D}=\varepsilon \vec{E}\]
+Wir nehmen an, dass die Material eine linear isotrop homogen Permitivität hat.
+Da unsere Aufbau symmetrisch ist, folgt daraus, dass die Elektrische Flussdichte auch symmetrisch ist, d.h es hängt nur von $r$ ab, bzw $\vec{D}=\vec{D}(r)=\varepsilon \vec{E}(r)$
+\[\oiint_{\partial K} \vec{E}(r) \* d \vec{A} = \iiint_{K} \frac{\rho}{\varepsilon} dV | d \vec{A} = r^2 \sin(\vartheta) d\vartheta d\varphi \vec{e}_r\]
+\[\int_0^{2\pi} \int_0^\pi \vec{E}(r) \* r^2 \sin(\vartheta) d\vartheta d\varphi \vec{e}_r = \iiint_{K} \frac{\rho}{\varepsilon} dV | dV= r^2\sin(\vartheta)dr d\theta d\varphi\]
+\[\int_0^{2\pi} \int_0^\pi E_r(r)  r^2 \sin(\vartheta) d\vartheta d\varphi  =\int_0^{2\pi} \int_0^\pi \int_0^r \frac{\rho(\tilde{r})}{\varepsilon} \tilde{r}^2\sin(\vartheta)d\tilde{r} d\vartheta d\varphi\]
+\[\cancel{2\pi} E_r(r)  r^2 \cancel{\int_0^\pi \sin(\vartheta) d\vartheta}  =\cancel{2\pi} \cancel{\int_0^\pi \sin(\vartheta) d\vartheta} \int_0^r \frac{\rho(\tilde{r})}{\varepsilon} \tilde{r}^2d\tilde{r} \]
+\[ E_r(r)  r^2   =\int_0^r \frac{\rho(\tilde{r})}{\varepsilon} \tilde{r}^2d\tilde{r} \]
+Die Ladungsträgerdichte ist $0$ wenn $r>a$:
+\[\varrho(r)=\begin{cases} 
+      0 & r>a \\
+      \rho_0 \frac{r}{a} & r\leq a\\
+   \end{cases}\]
+%\[ E_r(r)     =\frac{1}{r^2 \varepsilon} \int_0^{\min(r,a)} \rho(\tilde{r}) \tilde{r}^2d\tilde{r} \]
+\[ E_r(r)     =\frac{1}{r^2 \varepsilon} \int_0^{\min(r,a)} \rho_0 \frac{\tilde{r}}{a} \tilde{r}^2d\tilde{r} \]
+\[ E_r(r)     =\frac{1}{r^2 \varepsilon} \int_0^{\min(r,a)} \rho_0 \frac{1}{a} \tilde{r}^3 d\tilde{r} \]
+\[ E_r(r)     =\frac{\rho_0}{r^2 \varepsilon a} \int_0^{\min(r,a)} \tilde{r}^3 d\tilde{r} \]
+\[ E_r(r)     =\frac{\rho_0}{4 r^2 \varepsilon a} {\min(r,a)}^4 \]
+
+\end{section}
+\end{document}
