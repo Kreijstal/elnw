@@ -216,6 +216,20 @@ Das Elektrischefeld der zweite Kugel könnte man so schreiben.
 \[ \vec{E_2}(\vec{x})  =-E_r(|\vec{x}-b\vec{e}_x|)\frac{\vec{x}-b\vec{e}_x}{|\vec{x}-b\vec{e}_x|}\]
 Das gesamte Elektrischefeld
 \[ \vec{E}(\vec{x})  =E_r(|\vec{x}+b\vec{e}_x|)\frac{\vec{x}+b\vec{e}_x}{|\vec{x}+b\vec{e}_x|}-E_r(|\vec{x}-b\vec{e}_x|)\frac{\vec{x}-b\vec{e}_x}{|\vec{x}-b\vec{e}_x|}\]
+Wegen symmetrie folgt für alle $\vec{x}\*\vec{e}_x= 0$, dass $|\vec{x}+b \vec{e}_x|=|\vec{x}-b \vec{e}_x|$.
+Wir ersetzen  $|\vec{x}+b \vec{e}_x|=|\vec{x}-b \vec{e}_x|=l(\vec{x})$
+\[ \vec{E}(\vec{x})|_{\vec{x}\*\vec{e}_x= 0}  =E_r(l(\vec{x}))\frac{\vec{x}+b\vec{e}_x}{l(\vec{x})}-E_r(l(\vec{x}))\frac{\vec{x}-b\vec{e}_x}{l(\vec{x})}
+=\frac{E_r(l(\vec{x}))}{l(\vec{x})}
+\left(\vec{x}+b\vec{e}_x-\vec{x}+b\vec{e}_x\right)\]
+\[ \vec{E}(\vec{x}) =\frac{E_r(l(\vec{x}))}{l(\vec{x})}
+\left(2b\vec{e}_x\right)
+=\frac{2b \varrho_0}{4 {l(\vec{x})}^3 \varepsilon a} {\min(l(\vec{x}),a)}^4\vec{e}_x\]
+da $\sqrt{a^2+b^2}>a$ folgt $\min(l(\vec{x}),a)=a$
+\[=\frac{2b \varrho_0}{4 {l(\vec{x})}^3 \varepsilon a} a^4\vec{e}_x
+=\frac{2b \varrho_0}{4 {l(\vec{x})}^3 \varepsilon } a^3 \vec{e}_x\]
+wenn $\vec{x}=(0,a,0)\implies l(\vec{x})=\sqrt{a^2+b^2}$
+\[ \vec{E}(\vec{x}) 
+=\frac{2b \varrho_0}{4 {\sqrt{a^2+b^2}}^3 \varepsilon } a^3 \vec{e}_x\]
 
 \end{itemize}
 \end{document}
