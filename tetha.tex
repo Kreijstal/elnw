@@ -102,34 +102,34 @@ zu berechnen. Geben Sie auch die Gesamtladung der Kugel an.
 
 Wir wissen, dass die Kugel hat eine Kugelsymmetrische Ladungsträgerdichte, wegen Symmetrie können wir unsere Integrale einfacher lösen.
 Wir verwenden die integrale Gauß’sche Gesetz. 
-\[\oiint_{\partial K} \vec{D} \* d \vec{A} = \iiint_{K} \rho dV | \vec{D}=\varepsilon \vec{E}\]
+\[\oiint_{\partial K} \vec{D} \* d \vec{A} = \iiint_{K} \varrho dV\quad | \vec{D}=\varepsilon \vec{E}\]
 Wir nehmen an, dass die Material eine linear isotrop homogen Permitivität hat.
 Da unsere Aufbau symmetrisch ist, folgt daraus, dass die Elektrische Flussdichte auch symmetrisch ist, d.h es hängt nur von $r$ ab, bzw $\vec{D}=\vec{D}(r)=\varepsilon \vec{E}(r)$
       \begin{align}
-        \oiint_{\partial K} \varepsilon\vec{E}(r) \* d \vec{A} &= \iiint_{K} \rho dV \quad| \frac{1}{\varepsilon} \nonumber\\
-        \oiint_{\partial K} \vec{E}(r) \* d \vec{A} &= \iiint_{K} \frac{\rho}{\varepsilon} dV \quad| d \vec{A} = r^2 \sin(\vartheta) d\vartheta d\varphi \vec{e}_r \nonumber\\
-\int_0^{2\pi} \int_0^\pi \vec{E}(r) \* r^2 \sin(\vartheta) d\vartheta d\varphi \vec{e}_r &= \iiint_{K} \frac{\rho}{\varepsilon} dV \quad| dV= r^2\sin(\vartheta)dr d\theta d\varphi \nonumber\\
-\int_0^{2\pi} \int_0^\pi E_r(r)  r^2 \sin(\vartheta) d\vartheta d\varphi  &=\int_0^{2\pi} \int_0^\pi \int_0^r \frac{\rho(\tilde{r})}{\varepsilon} \tilde{r}^2\sin(\vartheta)d\tilde{r} d\vartheta d\varphi \label{eq:1}\\
-\cancel{2\pi} E_r(r)  r^2 \cancel{\int_0^\pi \sin(\vartheta) d\vartheta}  &=\cancel{2\pi} \cancel{\int_0^\pi \sin(\vartheta) d\vartheta} \int_0^r \frac{\rho(\tilde{r})}{\varepsilon} \tilde{r}^2d\tilde{r} \nonumber\\
- E_r(r)  r^2   &=\int_0^r \frac{\rho(\tilde{r})}{\varepsilon} \tilde{r}^2d\tilde{r} \nonumber
+        \oiint_{\partial K} \varepsilon\vec{E}(r) \* d \vec{A} &= \iiint_{K} \varrho dV \quad| \frac{1}{\varepsilon} \nonumber\\
+        \oiint_{\partial K} \vec{E}(r) \* d \vec{A} &= \iiint_{K} \frac{\varrho}{\varepsilon} dV \quad| d \vec{A} = r^2 \sin(\vartheta) d\vartheta d\varphi \vec{e}_r \nonumber\\
+\int_0^{2\pi} \int_0^\pi \vec{E}(r) \* r^2 \sin(\vartheta) d\vartheta d\varphi \vec{e}_r &= \iiint_{K} \frac{\varrho}{\varepsilon} dV \quad| dV= r^2\sin(\vartheta)dr d\theta d\varphi \nonumber\\
+\int_0^{2\pi} \int_0^\pi E_r(r)  r^2 \sin(\vartheta) d\vartheta d\varphi  &=\int_0^{2\pi} \int_0^\pi \int_0^r \frac{\varrho(\tilde{r})}{\varepsilon} \tilde{r}^2\sin(\vartheta)d\tilde{r} d\vartheta d\varphi \label{eq:1}\\
+\cancel{2\pi} E_r(r)  r^2 \cancel{\int_0^\pi \sin(\vartheta) d\vartheta}  &=\cancel{2\pi} \cancel{\int_0^\pi \sin(\vartheta) d\vartheta} \int_0^r \frac{\varrho(\tilde{r})}{\varepsilon} \tilde{r}^2d\tilde{r} \nonumber\\
+ E_r(r)  r^2   &=\int_0^r \frac{\varrho(\tilde{r})}{\varepsilon} \tilde{r}^2d\tilde{r} \nonumber
     \end{align}
 
 Die Ladungsträgerdichte ist $0$ wenn $r>a$:
 \[\varrho(r)=\begin{cases} 
       0 & r>a \\
-      \rho_0 \frac{r}{a} & r\leq a\\
+      \varrho_0 \frac{r}{a} & r\leq a\\
    \end{cases}\]
-%\[ E_r(r)     =\frac{1}{r^2 \varepsilon} \int_0^{\min(r,a)} \rho(\tilde{r}) \tilde{r}^2d\tilde{r} \]
-\[ E_r(r)     =\frac{1}{r^2 \varepsilon} \int_0^{\min(r,a)} \rho_0 \frac{\tilde{r}}{a} \tilde{r}^2d\tilde{r} \]
-\[ E_r(r)     =\frac{1}{r^2 \varepsilon} \int_0^{\min(r,a)} \rho_0 \frac{1}{a} \tilde{r}^3 d\tilde{r} \]
-\[ E_r(r)     =\frac{\rho_0}{r^2 \varepsilon a} \int_0^{\min(r,a)} \tilde{r}^3 d\tilde{r} \]
-\[ E_r(r)     =\frac{\rho_0}{4 r^2 \varepsilon a} {\min(r,a)}^4 \]
+%\[ E_r(r)     =\frac{1}{r^2 \varepsilon} \int_0^{\min(r,a)} \varrho(\tilde{r}) \tilde{r}^2d\tilde{r} \]
+\[ E_r(r)     =\frac{1}{r^2 \varepsilon} \int_0^{\min(r,a)} \varrho_0 \frac{\tilde{r}}{a} \tilde{r}^2d\tilde{r} \]
+\[ E_r(r)     =\frac{1}{r^2 \varepsilon} \int_0^{\min(r,a)} \varrho_0 \frac{1}{a} \tilde{r}^3 d\tilde{r} \]
+\[ E_r(r)     =\frac{\varrho_0}{r^2 \varepsilon a} \int_0^{\min(r,a)} \tilde{r}^3 d\tilde{r} \]
+\[ E_r(r)     =\frac{\varrho_0}{4 r^2 \varepsilon a} {\min(r,a)}^4 \]
 Für die Gesamtladung, ersetzen wir $E_r$ in \eqref{eq:1} wenn $r=a$:
 \begin{gather*}
     \int_0^{2\pi} \int_0^\pi \varepsilon E_r(r)  r^2 \sin(\vartheta) d\vartheta d\varphi = 2\pi \int_0^\pi \sin(\vartheta) d\vartheta \varepsilon E_r(r)  r^2\\
 =2\pi \left(-\cos(\pi)+\cos(0)\right) \varepsilon  E_r(r)  r^2 \quad | r=a\\
-=2\pi \left(-\cos(\pi)+1\right) \varepsilon  E_r(a)  a^2 = 2\pi \left(1+1\right) \varepsilon  \frac{\rho_0}{4 a^2 \varepsilon a} a^4   a^2\\
-= 4\pi \frac{\rho_0}{4} a^3=\pi\rho_0 a^3
+=2\pi \left(-\cos(\pi)+1\right) \varepsilon  E_r(a)  a^2 = 2\pi \left(1+1\right) \varepsilon  \frac{\varrho_0}{4 a^2 \varepsilon a} a^4   a^2\\
+= 4\pi \frac{\varrho_0}{4} a^3=\pi\varrho_0 a^3
 \end{gather*}
 
 
@@ -143,9 +143,56 @@ Für die Gesamtladung, ersetzen wir $E_r$ in \eqref{eq:1} wenn $r=a$:
      Dank kugelsymmetrie folgt:
      \[\frac{\partial \phi}{\vartheta}=0,\quad\frac{\partial \phi}{\varphi}=0\]
 Somit:
-\[\vec{E}=\frac{\partial \phi}{\partial r}\vec{e}_r \> \phi = -\int E_r d\xi +\tilde{c}\]
-Wir setzen die Bezugspotential im unendliche gleich 0. \(\phi(\infty)\overset{!}{=}0\)
+\[\vec{E}=\frac{\partial \phi}{\partial r}\vec{e}_r \> \phi(r) = -\int E_r d r +\tilde{c}\]
+\[\phi(r)=\int -E_r(r) dr+\tilde{c}=\int -\frac{\varrho_0}{4 r^2 \varepsilon a} {\min(r,a)}^4  dr  +\tilde{c}\]
+Wir setzen die Bezugspotential im unendliche gleich $0$. \(\phi(\infty)\overset{!}{=}0\)
+\[\lim_{r\rightarrow\infty}\phi(r)=-\int_0^\infty \frac{\varrho_0}{4 r^2 \varepsilon a} {\min(r,a)}^4  dr  +\tilde{c}
+=-\int_0^a \frac{\varrho_0}{4 r^2 \varepsilon a} {\min(r,a)}^4  dr -\int_a^\infty \frac{\varrho_0}{4 r^2 \varepsilon a} {\min(r,a)}^4  dr  +\tilde{c} \]
+\[=-\int_0^a \frac{\varrho_0}{4 r^2 \varepsilon a} {r}^4  dr -\int_a^\infty \frac{\varrho_0}{4 r^2 \varepsilon a} {a}^4  dr  +\tilde{c} \overset{!}{=}0\]
+Wir evaluieren die erste Integral.
+\[\int_0^a \frac{\varrho_0}{4 r^2 \varepsilon a} {r}^4  dr=\frac{\varrho_0}{4 \varepsilon a}\int_0^a \frac{r^4}{r^2} dr=\frac{\varrho_0}{4 \varepsilon a} \frac{a^3}{3}=\frac{\varrho_0 a^2}{12 \varepsilon }\]
+Wir evaluieren die zweite Integral.
+\[\int_a^\infty \frac{\varrho_0}{4 r^2 \varepsilon a} {a}^4  dr=\frac{a^4 \varrho_0}{4\varepsilon a}\int_a^\infty \frac{1}{r^2} dr
+=\frac{a^4 \varrho_0}{4\varepsilon a}\left[-\frac{1}{r}\right]_{r=a}^{r\rightarrow\infty}
+=\frac{a^3 \varrho_0}{4\varepsilon}\left(\frac{1}{a}\right)
+=\frac{a^2 \varrho_0}{4\varepsilon}\]
+\[0\overset{!}{=}-\frac{\varrho_0 a^2}{12 \varepsilon }-\frac{a^2 \varrho_0}{4\varepsilon}+\tilde{c}\implies\tilde{c}=\frac{a^2 \varrho_0}{3\varepsilon}\] 
+Daraus folgt:
+\[\phi(r)=-\int_0^r \frac{\varrho_0}{4 \tilde{r}^2 \varepsilon a} {\min(\tilde{r},a)}^4  d\tilde{r}  +\frac{a^2 \varrho_0}{3\varepsilon}\]
+Es läss sich auch so darstellen:
+\[\phi(r)=-\left(\int_0^{\min(a,r)} \frac{\varrho_0}{4 r^2 \varepsilon a} {r}^4  dr+\int_a^{\max(a,r)} \frac{\varrho_0}{4 r^2 \varepsilon a} {a}^4 dr\right)  +\frac{a^2 \varrho_0}{3\varepsilon}\]
+\[=-\left(\frac{\varrho_0}{4 \varepsilon a} \frac{{\min(a,r)}^3}{3}+
+\frac{a^3 \varrho_0}{4\varepsilon}\left(-\frac{1}{\max(a,r)}+\frac{1}{a}\right)-\frac{a^2 \varrho_0}{3\varepsilon}\right)\]
+\[=-\left(\frac{\varrho_0}{\varepsilon}\left(\frac{1}{4 a} \frac{{\min(a,r)}^3}{3}+
+\frac{a^3}{4}\left(-\frac{1}{\max(a,r)}+\frac{1}{a}\right)-\frac{a^2}{3}\right)\right)\]
+\[=-\left(\frac{\varrho_0}{4 \varepsilon}\left(\frac{1}{a} \frac{{\min(a,r)}^3}{3}+
+a^3 \left(-\frac{1}{\max(a,r)}+\frac{1}{a}\right)-\frac{4 a^2}{3}\right)\right)\]
+\[=-\left(\frac{\varrho_0}{12 \varepsilon}\left(\frac{1}{a} {\min(a,r)}^3+
+3a^3 \left(-\frac{1}{\max(a,r)}+\frac{1}{a}\right)-4 a^2\right)\right)\]
+Um deutlicher Formeln zu bekommen können wir Fallunterschied machen.
+\begin{itemize}
+\item[Fall $r\leq a$]
+\(\min(r,a)=r \land \max(r,a)=a\)
+\[\phi(r)=-\frac{\varrho_0}{12 \varepsilon}\left(\frac{1}{a} {r}^3+
+3a^3 \left(-\frac{1}{a}+\frac{1}{a}\right)-4 a^2\right)\]
+\[=-\frac{\varrho_0}{12 \varepsilon}\left(\frac{1}{a} {r}^3-4 a^2\right)\]
+\item[Fall $r>a$]
+\(\min(r,a)=a \land \max(r,a)=r\)
+\[\phi(r)=-\frac{\varrho_0}{12 \varepsilon}\left(\frac{1}{a} {a}^3+
+3a^3 \left(-\frac{1}{r}+\frac{1}{a}\right)-4 a^2\right)\]
+\[\phi(r)=-\frac{\varrho_0 a^2}{12 \varepsilon}\left(1+
+3a \left(-\frac{1}{r}+\frac{1}{a}\right)-4 \right)\]
+\[\phi(r)=-\frac{\varrho_0 a^2}{12 \varepsilon}\left(
+3a \left(\frac{r-a}{a r}\right)-3 \right)\]
+\[\phi(r)=-\frac{\varrho_0 a^2}{4 \varepsilon}\left(
+\left(\frac{r-a}{r}\right)-1 \right)\]
+\[\phi(r)=-\frac{\varrho_0 a^2}{4 \varepsilon}\left(
+\left(1-\frac{a}{r}\right)-1 \right)\]
+\[\phi(r)=\frac{\varrho_0 a^2}{4 \varepsilon}\left(
+\frac{a}{r} \right)\]
+\[\phi(r)=\frac{\varrho_0 a^3}{4 r \varepsilon}\]
 
+\end{itemize}
 
  %   \end{section*}
 %\begin{section*}{Aufgabe c)}%Aufgabe 1
