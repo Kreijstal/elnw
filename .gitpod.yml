@@ -7,5 +7,4 @@ tasks:
 vscode:
   extensions:
     - james-yu.latex-workshop@8.16.1:6fa4781b23391668bffdedabbfdfa6bc
-    - efoerster.texlab@2.2.1:58163fe2a360fec2e5f6b24c6e34a5af
     - valentjn.vscode-ltex@10.2.0:d993f760d28e87240f6abbd206218f9b
