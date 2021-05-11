@@ -205,14 +205,17 @@ den Orten $(\mp b, 0, 0)$ befinden?
 Wir haben das Potential der Kugel im Ursprung, also wir können durch Superposition und Verschiebung das Potential der Raum so beschreiben.
 \[\phi(\vec{x})=\phi_1(|\vec{x}+b \vec{e}_x|)+\phi_2(|\vec{x}-b \vec{e}_x|)\]
 das Potential von Kugel 2 ist gleich wie Kugel 1 aber mit verschiedene Vorzeichen.
-\[\phi(\vec{x})=\phi_1(|\vec{x}+b \vec{e}_x|)-(|\vec{x}-b \vec{e}_x|)\quad | phi_1(r)=\frac{\varrho_0 a^3}{4 r \varepsilon}\]
+\[\phi(\vec{x})=\phi_1(|\vec{x}+b \vec{e}_x|)-(|\vec{x}-b \vec{e}_x|)\quad | \phi_1(r)=\frac{\varrho_0 a^3}{4 r \varepsilon}\]
 \[\phi(\vec{x})=\left(\frac{\varrho_0 a^3}{4 (|\vec{x}+b \vec{e}_x|)\varepsilon}\right)-\left(\frac{\varrho_0 a^3}{4|\vec{x}-b \vec{e}_x| \varepsilon}\right)\]
 \[\phi(\vec{x})=\frac{\varrho_0 a^3}{4\varepsilon}\left(\frac{1}{ |\vec{x}+b \vec{e}_x|}-\frac{1}{|\vec{x}-b \vec{e}_x|}\right)
 =\frac{\varrho_0 a^3}{4\varepsilon}\frac{|\vec{x}-b \vec{e}_x|- |\vec{x}+b \vec{e}_x|}{ |\vec{x}+b \vec{e}_x| |\vec{x}-b \vec{e}_x|}\]
+Das sieht nicht ganz einfach abzuleiten, deswegen fangen wir mit der Elektrischefeld an.
+\[ E_r(r)  =\frac{\varrho_0}{4 r^2 \varepsilon a} {\min(r,a)}^4 \]
+Als Ansatz $\vec{E}(r)=E_r(r)\vec{e}_r$
+Das Elektrischefeld der zweite Kugel könnte man so schreiben.
+\[ \vec{E_2}(\vec{x})  =-E_r(|\vec{x}-b\vec{e}_x|)\frac{\vec{x}-b\vec{e}_x}{|\vec{x}-b\vec{e}_x|}\]
+Das gesamte Elektrischefeld
+\[ \vec{E}(\vec{x})  =E_r(|\vec{x}+b\vec{e}_x|)\frac{\vec{x}+b\vec{e}_x}{|\vec{x}+b\vec{e}_x|}-E_r(|\vec{x}-b\vec{e}_x|)\frac{\vec{x}-b\vec{e}_x}{|\vec{x}-b\vec{e}_x|}\]
 
-Wegen symmetrie folgt für alle $\vec{x}\*\vec{e}_x\neq 0$, dass $|\vec{x}+b \vec{e}_x|=|\vec{x}-b \vec{e}_x|$.
-
-Und somit.
-\[\phi(0,a,0)=0\]
 \end{itemize}
 \end{document}
