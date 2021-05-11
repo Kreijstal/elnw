@@ -1,0 +1,484 @@
+%------------------------------------%
+%----- 4_Versuchsergebnisse.tex -----%
+%------------------------------------%
+%------------------------------------%
+%
+\subsection{Messdaten}
+%
+%------------------------------%
+%----- Beginn eures Teils -----%
+%------------------------------%
+%
+
+%
+%
+%
+%\begin{flushright}
+  %\textit{\autorA}
+%\end{flushright}
+%
+%------------------------------%
+%------ Ende eures Teils ------%
+%------------------------------%
+%
+%
+%
+\newpage
+\subsection{Ergebnisplots}
+\label{subsec:4_Plots}
+%
+%--- Einlesen der theoretischen Ergebnisse ---%
+\pgfplotstableread[col sep = comma]{src/4_Theo_Ergebnisse_Z.txt}\dataTheoZ  % bereits in kOhm
+\pgfplotstableread[col sep = comma]{src/4_Theo_Ergebnisse_Y.txt}\dataTheoY  % bereits in mS
+%--- Einlesen der Simulationsdaten ---%
+\pgfplotstableread[col sep = comma]{src/4_Sim_Ergebnisse_Z.txt}\dataSimZ    % bereits in kOhm
+\pgfplotstableread[col sep = comma]{src/4_Sim_Ergebnisse_Y.txt}\dataSimY    % bereits in mS
+%--- Einlesen der Messdaten ---%
+\pgfplotstableread[col sep = comma]{src/4_Mess_Ergebnisse_Z.txt}\dataMessZ  % bereits in kOhm
+\pgfplotstableread[col sep = comma]{src/4_Mess_Ergebnisse_Y.txt}\dataMessY  % bereits in mS
+%--- Ermitteln der Extremwerte der Messdaten ---%
+% Startwerte
+\pgfplotstablegetelem{0}{ReZ}\of\dataMessZ
+\pgfmathsetmacro{\ReZmin}{\pgfplotsretval}
+\pgfmathsetmacro{\ReZmax}{\pgfplotsretval}
+\pgfplotstablegetelem{0}{ImZ}\of\dataMessZ
+\pgfmathsetmacro{\ImZmin}{\pgfplotsretval}
+\pgfmathsetmacro{\ImZmax}{\pgfplotsretval}
+\pgfplotstablegetelem{0}{ReY}\of\dataMessY
+\pgfmathsetmacro{\ReYmin}{\pgfplotsretval}
+\pgfmathsetmacro{\ReYmax}{\pgfplotsretval}
+\pgfplotstablegetelem{0}{ImY}\of\dataMessY
+\pgfmathsetmacro{\ImYmin}{\pgfplotsretval}
+\pgfmathsetmacro{\ImYmax}{\pgfplotsretval}
+% Anzahl der Zeilen in den Messdatentabellen
+\pgfplotstablegetrowsof{\dataMessZ}
+\pgfmathsetmacro{\nRowsZ}{\pgfplotsretval - 1}
+\pgfplotstablegetrowsof{\dataMessY}
+\pgfmathsetmacro{\nRowsY}{\pgfplotsretval - 1}
+% For-Schleifen zur Ermittlung der Extremwerte
+\pgfplotsforeachungrouped \i in {1,...,\nRowsZ}
+{
+  % Realteile
+  \pgfplotstablegetelem{\i}{ReZ}\of\dataMessZ
+  \pgfmathsetmacro{\temp}{\pgfplotsretval}
+  % min
+  \ifthenelse{\lengthtest{\temp pt < \ReZmin pt}}
+  {\pgfmathsetmacro{\ReZmin}{\temp}}{}
+  % max
+  \ifthenelse{\lengthtest{\temp pt > \ReZmax pt}}
+  {\pgfmathsetmacro{\ReZmax}{\temp}}{}
+  % Imaginärteile
+  \pgfplotstablegetelem{\i}{ImZ}\of\dataMessZ
+  \pgfmathsetmacro{\temp}{\pgfplotsretval}
+  % min
+  \ifthenelse{\lengthtest{\temp pt < \ImZmin pt}}
+  {\pgfmathsetmacro{\ImZmin}{\temp}}{}
+  % max
+  \ifthenelse{\lengthtest{\temp pt > \ImZmax pt}}
+  {\pgfmathsetmacro{\ImZmax}{\temp}}{}
+}
+\pgfplotsforeachungrouped \i in {1,...,\nRowsY}
+{
+  % Realteile
+  \pgfplotstablegetelem{\i}{ReY}\of\dataMessY
+  \pgfmathsetmacro{\temp}{\pgfplotsretval}
+  % min
+  \ifthenelse{\lengthtest{\temp pt < \ReYmin pt}}
+  {\pgfmathsetmacro{\ReYmin}{\temp}}{}
+  % max
+  \ifthenelse{\lengthtest{\temp pt > \ReYmax pt}}
+  {\pgfmathsetmacro{\ReYmax}{\temp}}{}
+  % Imaginärteile
+  \pgfplotstablegetelem{\i}{ImY}\of\dataMessY
+  \pgfmathsetmacro{\temp}{\pgfplotsretval}
+  % min
+  \ifthenelse{\lengthtest{\temp pt < \ImYmin pt}}
+  {\pgfmathsetmacro{\ImYmin}{\temp}}{}
+  % max
+  \ifthenelse{\lengthtest{\temp pt > \ImYmax pt}}
+  {\pgfmathsetmacro{\ImYmax}{\temp}}{}
+}
+%--- Konstanten ---%
+\pgfmathsetmacro{\PI}{3.1415}
+% Grundelemente
+\pgfmathsetmacro{\R}{0.47}    % Widerstand in kOhm
+\pgfmathsetmacro{\C}{0.00068} % Kapazität in mF
+% Frequenzen
+\pgfmathsetmacro{\fa}{10}     % f =  10 Hz
+\pgfmathsetmacro{\fb}{100}    % f = 100 Hz
+\pgfmathsetmacro{\fc}{1000}   % f =   1 kHz
+\pgfmathsetmacro{\fd}{10000}  % f =  10 kHz
+\pgfmathsetmacro{\fe}{100000} % f = 100 kHz
+% Ausgewählte theoretische Werte
+\pgfplotstablegetelem{0}{ReZ}\of\dataTheoZ
+\pgfmathsetmacro{\ReZtheoa}{\pgfplotsretval}
+\pgfplotstablegetelem{1}{ReZ}\of\dataTheoZ
+\pgfmathsetmacro{\ReZtheob}{\pgfplotsretval}
+\pgfplotstablegetelem{2}{ReZ}\of\dataTheoZ
+\pgfmathsetmacro{\ReZtheoc}{\pgfplotsretval}
+\pgfplotstablegetelem{3}{ReZ}\of\dataTheoZ
+\pgfmathsetmacro{\ReZtheod}{\pgfplotsretval}
+\pgfplotstablegetelem{4}{ReZ}\of\dataTheoZ
+\pgfmathsetmacro{\ReZtheoe}{\pgfplotsretval}
+\pgfplotstablegetelem{0}{ImZ}\of\dataTheoZ
+\pgfmathsetmacro{\ImZtheoa}{\pgfplotsretval}
+\pgfplotstablegetelem{1}{ImZ}\of\dataTheoZ
+\pgfmathsetmacro{\ImZtheob}{\pgfplotsretval}
+\pgfplotstablegetelem{2}{ImZ}\of\dataTheoZ
+\pgfmathsetmacro{\ImZtheoc}{\pgfplotsretval}
+\pgfplotstablegetelem{3}{ImZ}\of\dataTheoZ
+\pgfmathsetmacro{\ImZtheod}{\pgfplotsretval}
+\pgfplotstablegetelem{4}{ImZ}\of\dataTheoZ
+\pgfmathsetmacro{\ImZtheoe}{\pgfplotsretval}
+\pgfplotstablegetelem{0}{ReY}\of\dataTheoY
+\pgfmathsetmacro{\ReYtheoa}{\pgfplotsretval}
+\pgfplotstablegetelem{1}{ReY}\of\dataTheoY
+\pgfmathsetmacro{\ReYtheob}{\pgfplotsretval}
+\pgfplotstablegetelem{2}{ReY}\of\dataTheoY
+\pgfmathsetmacro{\ReYtheoc}{\pgfplotsretval}
+\pgfplotstablegetelem{3}{ReY}\of\dataTheoY
+\pgfmathsetmacro{\ReYtheod}{\pgfplotsretval}
+\pgfplotstablegetelem{4}{ReY}\of\dataTheoY
+\pgfmathsetmacro{\ReYtheoe}{\pgfplotsretval}
+\pgfplotstablegetelem{0}{ImY}\of\dataTheoY
+\pgfmathsetmacro{\ImYtheoa}{\pgfplotsretval}
+\pgfplotstablegetelem{1}{ImY}\of\dataTheoY
+\pgfmathsetmacro{\ImYtheob}{\pgfplotsretval}
+\pgfplotstablegetelem{2}{ImY}\of\dataTheoY
+\pgfmathsetmacro{\ImYtheoc}{\pgfplotsretval}
+\pgfplotstablegetelem{3}{ImY}\of\dataTheoY
+\pgfmathsetmacro{\ImYtheod}{\pgfplotsretval}
+\pgfplotstablegetelem{4}{ImY}\of\dataTheoY
+\pgfmathsetmacro{\ImYtheoe}{\pgfplotsretval}
+% Ausgewählte Simulationsdaten
+\pgfplotstablegetelem{0}{ReZ}\of\dataSimZ
+\pgfmathsetmacro{\ReZsima}{\pgfplotsretval}
+\pgfplotstablegetelem{100}{ReZ}\of\dataSimZ
+\pgfmathsetmacro{\ReZsimb}{\pgfplotsretval}
+\pgfplotstablegetelem{200}{ReZ}\of\dataSimZ
+\pgfmathsetmacro{\ReZsimc}{\pgfplotsretval}
+\pgfplotstablegetelem{300}{ReZ}\of\dataSimZ
+\pgfmathsetmacro{\ReZsimd}{\pgfplotsretval}
+\pgfplotstablegetelem{400}{ReZ}\of\dataSimZ
+\pgfmathsetmacro{\ReZsime}{\pgfplotsretval}
+\pgfplotstablegetelem{0}{ImZ}\of\dataSimZ
+\pgfmathsetmacro{\ImZsima}{\pgfplotsretval}
+\pgfplotstablegetelem{100}{ImZ}\of\dataSimZ
+\pgfmathsetmacro{\ImZsimb}{\pgfplotsretval}
+\pgfplotstablegetelem{200}{ImZ}\of\dataSimZ
+\pgfmathsetmacro{\ImZsimc}{\pgfplotsretval}
+\pgfplotstablegetelem{300}{ImZ}\of\dataSimZ
+\pgfmathsetmacro{\ImZsimd}{\pgfplotsretval}
+\pgfplotstablegetelem{400}{ImZ}\of\dataSimZ
+\pgfmathsetmacro{\ImZsime}{\pgfplotsretval}
+\pgfplotstablegetelem{0}{ReY}\of\dataSimY
+\pgfmathsetmacro{\ReYsima}{\pgfplotsretval}
+\pgfplotstablegetelem{100}{ReY}\of\dataSimY
+\pgfmathsetmacro{\ReYsimb}{\pgfplotsretval}
+\pgfplotstablegetelem{200}{ReY}\of\dataSimY
+\pgfmathsetmacro{\ReYsimc}{\pgfplotsretval}
+\pgfplotstablegetelem{300}{ReY}\of\dataSimY
+\pgfmathsetmacro{\ReYsimd}{\pgfplotsretval}
+\pgfplotstablegetelem{400}{ReY}\of\dataSimY
+\pgfmathsetmacro{\ReYsime}{\pgfplotsretval}
+\pgfplotstablegetelem{0}{ImY}\of\dataSimY
+\pgfmathsetmacro{\ImYsima}{\pgfplotsretval}
+\pgfplotstablegetelem{100}{ImY}\of\dataSimY
+\pgfmathsetmacro{\ImYsimb}{\pgfplotsretval}
+\pgfplotstablegetelem{200}{ImY}\of\dataSimY
+\pgfmathsetmacro{\ImYsimc}{\pgfplotsretval}
+\pgfplotstablegetelem{300}{ImY}\of\dataSimY
+\pgfmathsetmacro{\ImYsimd}{\pgfplotsretval}
+\pgfplotstablegetelem{400}{ImY}\of\dataSimY
+\pgfmathsetmacro{\ImYsime}{\pgfplotsretval}
+%
+Im Folgenden werden die theoretischen, die Mess- und die Simulationsergebnisse in Vergleichsplots dargestellt.
+\par
+%--- Theorie vs. Simulation ---%
+Abbildung \ref{fig:4_Plot_TS} zeigt einen Vergleich der theoretischen Ergebnisse mit den Simulationsergebnissen.
+%
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.95\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        width = 0.75\linewidth,
+        xmin = 0, ymin = -25,
+        xmax = 1, ymax =  0,
+        xlabel = {$\text{Re}\{\underline{Z}\}$ in \si{\kilo\ohm}},
+        ylabel = {$\text{Im}\{\underline{Z}\}$ in \si{\kilo\ohm}},
+        grid,
+        legend style = {
+          at = {(1,1)},
+          anchor = north east,
+          legend cell align = left,
+          align = left,
+          draw = black}
+        ]
+        \addplot[thick, color = red] coordinates
+        {
+          (\R,-25)
+          (\R,  0)
+        };
+        \addlegendentry{Theoretischer Verlauf}
+        \addplot[color = blue, thick, dashed] table[x = ReZ, y = ImZ] from \dataSimZ;
+        \addlegendentry{Simulationsdaten}
+        \draw[xshift = 0.4cm, ->] (\R,-15) -- (\R,-12.5) node[anchor = west]{$f$} -- (\R,-9.375);
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Plot der Impedanzortskurve}
+    \label{fig:4_Plot_ZTS}
+  \end{subfigure}
+  %
+  \par\bigskip
+  %
+  \begin{subfigure}[b]{0.95\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        width = 0.75\linewidth,
+        unit vector ratio=1 1 1,
+        xmin =   0, ymin = 0,
+        xmax = 2.5, ymax = 1.5,
+        xlabel = {$\text{Re}\{\underline{Y}\}$ in \si{\milli\siemens}},
+        ylabel = {$\text{Im}\{\underline{Y}\}$ in \si{\milli\siemens}},
+        grid,
+        legend style = {
+          at = {(1,1)},
+          anchor = north east,
+          legend cell align = left,
+          align = left,
+          draw = black}
+        ]
+        \draw[color = red] ({1/\R},0) arc[radius = {1/(2*\R)}, start angle = 0, end angle = 180];
+        \addlegendimage{color = red}
+        \addlegendentry{Theoretischer Verlauf}
+        \addplot[color = blue, thick, dashed] table[x = ReY, y = ImY] from \dataSimY;
+        \addlegendentry{Simulationsdaten}
+        \draw[<-] ({1.05/\R - 1.1/(2*\R) * (1 - cos(30)},{1.1/(2*\R) * sin(30)}) arc[radius = {1.1/(2*\R)}, start angle = 30, end angle = 65] node[anchor = west, xshift = 1.3cm, yshift = -0.5cm]{$f$};
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Plot der Admittanzortskurve}
+    \label{fig:4_Plot_YTS}
+  \end{subfigure}
+  \caption{Plot der theoretischen und der Simulationsergebnisse}
+  \label{fig:4_Plot_TS}
+\end{figure}
+%
+Es wird deutlich, dass die Kurven sowohl in Abb. \ref{fig:4_Plot_ZTS} als auch in Abb. \ref{fig:4_Plot_YTS} nahezu identisch und mit bloßem Auge nicht unterscheidbar sind. In den Tab. \ref{tab:4_ZTS} und \ref{tab:4_YTS} wurden daraufhin die Werte des theoretischen Verlaufs sowie der Simulationsdaten für ausgewählte Stützstellen miteinander verglichen.
+%
+\begin{table}[H]
+  \centering
+	\caption{Impedanzortskurve: Vergleich von Theorie und Simulation}
+	\label{tab:4_ZTS}
+	\renewcommand*{\arraystretch}{1.25}
+	\begin{tabular}{rrrrr}
+	  \toprule
+		%
+	  \multicolumn{1}{c}{} &
+		\multicolumn{2}{c}{Theorie} &
+		\multicolumn{2}{c}{Simulation} \\
+		\cmidrule(lr{1mm}){2-3}\cmidrule(lr{1mm}){4-5}
+		%
+    $f_\mathrm{E}$ in \si{\hertz} &
+    $\text{Re}\{\underline{Z}_\mathrm{RC}\}$ in \si{\kilo\ohm} &
+    $\text{Im}\{\underline{Z}_\mathrm{RC}\}$ in \si{\kilo\ohm} &
+    $\text{Re}\{\underline{Z}_\mathrm{RC}\}$ in \si{\kilo\ohm} &
+    $\text{Im}\{\underline{Z}_\mathrm{RC}\}$ in \si{\kilo\ohm} \\
+		\midrule
+		%
+    \num{10}     & \num{\ReZtheoa} & \num{\ImZtheoa} & \num{\ReZsima} & \num{\ImZsima} \\
+    \num{100}    & \num{\ReZtheob} & \num{\ImZtheob} & \num{\ReZsimb} & \num{\ImZsimb} \\
+    \num{1000}   & \num{\ReZtheoc} & \num{\ImZtheoc} & \num{\ReZsimc} & \num{\ImZsimc} \\
+    \num{10000}  & \num{\ReZtheod} & \num{\ImZtheod} & \num{\ReZsimd} & \num{\ImZsimd} \\
+    \num{100000} & \num{\ReZtheoe} & \num{\ImZtheoe} & \num{\ReZsime} & \num{\ImZsime} \\
+    %
+		\bottomrule
+	\end{tabular}
+\end{table}
+%
+\begin{table}[H]
+  \centering
+	\caption{Admittanzortskurve: Vergleich von Theorie und Simulation}
+	\label{tab:4_YTS}
+	\renewcommand*{\arraystretch}{1.25}
+	\begin{tabular}{rrrrr}
+	  \toprule
+		%
+	  \multicolumn{1}{c}{} &
+		\multicolumn{2}{c}{Theorie} &
+		\multicolumn{2}{c}{Simulation} \\
+		\cmidrule(lr{1mm}){2-3}\cmidrule(lr{1mm}){4-5}
+		%
+    $f_\mathrm{E}$ in \si{\hertz} &
+    $\text{Re}\{\underline{Y}_\mathrm{RC}\}$ in \si{\milli\siemens} &
+    $\text{Im}\{\underline{Y}_\mathrm{RC}\}$ in \si{\milli\siemens} &
+    $\text{Re}\{\underline{Y}_\mathrm{RC}\}$ in \si{\milli\siemens} &
+    $\text{Im}\{\underline{Y}_\mathrm{RC}\}$ in \si{\milli\siemens} \\
+		\midrule
+		%
+    \num{10}     & \num{\ReYtheoa} & \num{\ImYtheoa} & \num{\ReYsima} & \num{\ImYsima} \\
+    \num{100}    & \num{\ReYtheob} & \num{\ImYtheob} & \num{\ReYsimb} & \num{\ImYsimb} \\
+    \num{1000}   & \num{\ReYtheoc} & \num{\ImYtheoc} & \num{\ReYsimc} & \num{\ImYsimc} \\
+    \num{10000}  & \num{\ReYtheod} & \num{\ImYtheod} & \num{\ReYsimd} & \num{\ImYsimd} \\
+    \num{100000} & \num{\ReYtheoe} & \num{\ImYtheoe} & \num{\ReYsime} & \num{\ImYsime} \\
+    %
+		\bottomrule
+	\end{tabular}
+\end{table}
+%
+Es ergeben sich~--~im Rahmen der begrenzten Genauigkeit der Zahlenrepräsentation~--~exakt gleiche Werte.
+\par
+Weitere, hier aus Platzgründen nicht dokumentierte Untersuchungen ergaben außerdem die Übereinstimmung der Simulationsdaten aller simulierten Frequenzen mit den theoretischen Werten; Theorie und Simulation liefern also für die untersuchte RC-Reihenschaltung dieselben Ergebnisse. Aus diesem Grund wurde darauf verzichtet, Theorie und Simulation getrennt mit den Messdaten zu vergleichen, und nur ein Vergleich mit den theoretischen Ergebnissen vorgenommen, wobei diese implizit mit den Simulationsdaten gleichzusetzen sind.
+\newpage
+Abbildung \ref{fig:4_Plot_TM} zeigt die theoretischen Ergebnisse zusammen mit denen der praktischen Messung.
+%
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.95\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        width = 0.8\linewidth,
+        xmin = 0, ymin = -5,
+        xmax = 1, ymax =  0,
+        xlabel = {$\text{Re}\{\underline{Z}\}$ in \si{\kilo\ohm}},
+        ylabel = {$\text{Im}\{\underline{Z}\}$ in \si{\kilo\ohm}},
+        grid,
+        legend style = {
+          at = {(1,1)},
+          anchor = north east,
+          legend cell align = left,
+          align = left,
+          draw = black}
+        ]
+        \addplot[thick, color = red] coordinates
+        {
+          (\R,-5)
+          (\R, 0)
+        };
+        \addlegendentry{Theoretischer Verlauf}
+        \addplot[only marks, mark = x] table[x = ReZ, y = ImZ] from \dataMessZ;
+        \addlegendentry{Messdaten}
+        \draw[xshift = 0.4cm, ->] (\R,-3) -- (\R,-2.5) node[anchor = west]{$f$} -- (\R,-1.875);
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Plot der Impedanzortskurve}
+    \label{fig:4_Plot_ZTM}
+  \end{subfigure}
+  %
+  \par\bigskip
+  %
+  \begin{subfigure}[b]{0.95\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        width = 0.8\linewidth,
+        unit vector ratio=1 1 1,
+        xmin =   0, ymin = 0,
+        xmax = 2.5, ymax = 1.5,
+        xlabel = {$\text{Re}\{\underline{Y}\}$ in \si{\milli\siemens}},
+        ylabel = {$\text{Im}\{\underline{Y}\}$ in \si{\milli\siemens}},
+        grid,
+        legend style = {
+          at = {(1,1)},
+          anchor = north east,
+          legend cell align = left,
+          align = left,
+          draw = black}
+        ]
+        \draw[color = red] ({1/\R},0) arc[radius = {1/(2*\R)}, start angle = 0, end angle = 180];
+        \addlegendimage{color = red}
+        \addlegendentry{Theoretischer Verlauf}
+        \addplot[only marks, mark = x] table[x = ReY, y = ImY] from \dataMessY;
+        \addlegendentry{Messdaten}
+        \draw[<-] ({1.05/\R - 1.1/(2*\R) * (1 - cos(30)},{1.1/(2*\R) * sin(30)}) arc[radius = {1.1/(2*\R)}, start angle = 30, end angle = 65] node[anchor = west, xshift = 1.3cm, yshift = -0.5cm]{$f$};
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Plot der Admittanzortskurve}
+    \label{fig:4_Plot_YTM}
+  \end{subfigure}
+  \caption{Plot der theoretischen und der Messergebnisse}
+  \label{fig:4_Plot_TM}
+\end{figure}
+%
+\newpage
+Abbildung \ref{fig:4_Plot_TM_Zoom} zeigt den für die Messdaten relevanten Ausschnitt der Kurven aus Abb. \ref{fig:4_Plot_TM}.
+%
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.95\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        width = 0.95\linewidth,
+        enlargelimits = 0.05,
+        xmin = \ReZmin, ymin = \ImZmin,
+        xmax = \ReZmax, ymax = \ImZmax,
+        xlabel = {$\text{Re}\{\underline{Z}\}$ in \si{\kilo\ohm}},
+        ylabel = {$\text{Im}\{\underline{Z}\}$ in \si{\kilo\ohm}},
+        xticklabel style = {/pgf/number format/precision = 3},
+        grid,
+        legend style = {
+          at = {(0,1)},
+          anchor = north west,
+          legend cell align = left,
+          align = left,
+          draw = black}
+        ]
+        \addplot[thick, color = red] coordinates
+        {
+          (\R, {\ImZmin - 0.1*abs(\ImZmin)})
+          (\R, {\ImZmax + 0.1*abs(\ImZmax)})
+        };
+        \addlegendentry{Theoretischer Verlauf}
+        \addplot[only marks, mark = x] table[x = ReZ, y = ImZ] from \dataMessZ;
+        \addlegendentry{Messdaten}
+        \draw[xshift = 0.4cm, ->] (\R,{(\ImZmax - \ImZmin)/2.5 + \ImZmin}) -- (\R,{(\ImZmax - \ImZmin)/2.0 + \ImZmin}) node[anchor = west]{$f$} -- (\R,{(\ImZmax - \ImZmin)/1.6 + \ImZmin});
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Plot der Impedanzortskurve}
+    \label{fig:4_Plot_ZTM_Zoom}
+  \end{subfigure}
+  %
+  \par\bigskip
+  %
+  \begin{subfigure}[t]{0.95\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        width = 0.95\linewidth,
+        enlargelimits = 0.05,
+        unit vector ratio = 1 1 1,
+        xmin = \ReYmin, ymin = \ImYmin,
+        xmax = \ReYmax, ymax = \ImYmax,
+        xlabel = {$\text{Re}\{\underline{Y}\}$ in \si{\milli\siemens}},
+        ylabel = {$\text{Im}\{\underline{Y}\}$ in \si{\milli\siemens}},
+        xticklabel style = {/pgf/number format/precision = 3},
+        yticklabel style = {/pgf/number format/precision = 3},
+        grid,
+        legend style = {
+          at = {(1,0)},
+          anchor = south east,
+          legend cell align = left,
+          align = left,
+          draw = black}
+        ]
+        \draw[color = red] ({1/\R},0) arc[radius = {1/(2*\R)}, start angle = 0, end angle = 180];
+        \addlegendimage{color = red}
+        \addlegendentry{Theoretischer Verlauf}
+        \addplot[only marks, mark = x] table[x = ReY, y = ImY] from \dataMessY;
+        \addlegendentry{Messdaten}
+        \draw[<-] ({0.97/\R - 0.94/(2*\R) * (1 - cos(75)},{0.94/(2*\R) * sin(75)}) arc[radius = {0.94/(2*\R)}, start angle = 75, end angle = 105] node[anchor = west, xshift = 1.5cm, yshift = -0.2cm]{$f$};
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Plot der Admittanzortskurve}
+    \label{fig:4_Plot_YTM_Zoom}
+  \end{subfigure}
+  \caption{Plot der theoretischen und der Messergebnisse (Ausschnitt)}
+  \label{fig:4_Plot_TM_Zoom}
+\end{figure}
+%
+%
+%

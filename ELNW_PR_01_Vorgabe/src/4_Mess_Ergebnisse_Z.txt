@@ -1,0 +1,8 @@
+ReZ,  ImZ
+0.45,  0.1
+0.48, -2.0
+%
+% Aufbereitete Messdaten für die Impedanzortskurve
+%
+% Real- und Imaginärteile in kOhm angeben! Trennzeichen ist - wie in der Kopfzeile - ein Komma.
+% Die Kommentar- und die Beispiel-Zeilen bitte anschließend löschen; die Kopfzeile muss natürlich bleiben!
