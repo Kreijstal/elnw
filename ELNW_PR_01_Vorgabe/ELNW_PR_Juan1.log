@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.1.16)  11 MAY 2021 21:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.1.16)  13 MAY 2021 11:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1293,10 +1293,9 @@ Package scrlayer-scrpage Info: deactivating warning for font element
 (scrlayer-scrpage)             `pagefoot' on input line 1271.
 )
 Package scrlayer-scrpage Info: auto-selection of `pagestyleset=KOMA-Script'.
-)
 Package scrhack Info: hyperref hack deactivated because of
 (scrhack)             detection of KOMA-Script class, that doesn't
-(scrhack)             need that hack, on input line 16.
+(scrhack)             need that hack, on input line 143.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2020/01/14 v7.00d Hypertext links for LaTeX
@@ -1414,6 +1413,19 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip90
 )
+(/usr/share/texlive/texmf-dist/tex/latex/csvsimple/csvsimple.sty
+Package: csvsimple 2019/04/09 version 1.21 LaTeX CSV file processing
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/shellesc.sty
+Package: shellesc 2019/11/08 v1.0c unified shell escape interface for LaTeX
+Package shellesc Info: Restricted shell escape enabled on input line 77.
+)
+\csv@file=\read5
+\c@csvinputline=\count365
+\c@csvrow=\count366
+\c@csvcol=\count367
+\csv@out=\write5
+))
 (./setup/0-1_Projektdaten.tex) (./setup/0-2_Layout.tex
 1: section
 ) (./ELNW_PR_Juan1.aux)
@@ -1447,21 +1459,21 @@ Dictionary: translator-basic-dictionary, Language: English
 (/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
 File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
 )
-\c@lstlisting=\count365
+\c@lstlisting=\count368
 Package scrhack Info: undefining \float@addtolists on input line 19.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count366
+\scratchcounter=\count369
 \scratchdimen=\dimen366
 \scratchbox=\box114
-\nofMPsegments=\count367
-\nofMParguments=\count368
+\nofMPsegments=\count370
+\nofMParguments=\count371
 \everyMPshowfont=\toks59
-\MPscratchCnt=\count369
+\MPscratchCnt=\count372
 \MPscratchDim=\dimen367
-\MPnumerator=\count370
-\makeMPintoPDFobject=\count371
+\MPnumerator=\count373
+\makeMPintoPDFobject=\count374
 \everyMPtoPDFconversion=\toks60
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1543,15 +1555,15 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count372
+\c@section@level=\count375
 )
 LaTeX Info: Redefining \ref on input line 19.
 LaTeX Info: Redefining \pageref on input line 19.
 LaTeX Info: Redefining \nameref on input line 19.
 
 (./ELNW_PR_Juan1.out) (./ELNW_PR_Juan1.out)
-\@outlinefile=\write5
-\openout5 = `ELNW_PR_Juan1.out'.
+\@outlinefile=\write6
+\openout6 = `ELNW_PR_Juan1.out'.
 
 Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           Using `bookmark' together with `hyperref' is recommended,
@@ -1570,7 +1582,7 @@ File: bkm-pdftex.def 2019/12/03 v1.28 bookmark driver for pdfTeX (HO)
 Package auxhook Info: \AddLineBeginMainAux comes a little late,
 (auxhook)             because the main .aux file is already opened on input lin
 e 168.
-\BKM@id=\count373
+\BKM@id=\count376
 ))
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
 9.
@@ -1684,8 +1696,8 @@ Package tocbasic Info: character protrusion at toc deactivated on input line 24
 .
 
 (./ELNW_PR_Juan1.toc)
-\tf@toc=\write6
-\openout6 = `ELNW_PR_Juan1.toc'.
+\tf@toc=\write7
+\openout7 = `ELNW_PR_Juan1.toc'.
 
  [3] (./1_Einleitung.tex) [4]
 (./3_Versuchsdurchfuehrung.tex
@@ -1704,36 +1716,45 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 6
+4.
 
-[5
+(/usr/share/texmf/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [5
 
 ]
-<src/3_Sim_Spannungsquelle.png, id=104, 445.665pt x 352.31625pt>
+<src/3_Sim_Spannungsquelle.png, id=105, 445.665pt x 352.31625pt>
 File: src/3_Sim_Spannungsquelle.png Graphic file (type png)
 <use src/3_Sim_Spannungsquelle.png>
-Package pdftex.def Info: src/3_Sim_Spannungsquelle.png  used on input line 84.
+Package pdftex.def Info: src/3_Sim_Spannungsquelle.png  used on input line 95.
 (pdftex.def)             Requested size: 409.71692pt x 323.89833pt.
 
 
 pdfTeX warning: pdflatex (file ./src/3_Sim_Schaltung.pdf): PDF inclusion: found
  PDF version <1.7>, but at most version <1.6> allowed
-<src/3_Sim_Schaltung.pdf, id=106, 540.32614pt x 318.78096pt>
+<src/3_Sim_Schaltung.pdf, id=107, 540.32614pt x 318.78096pt>
 File: src/3_Sim_Schaltung.pdf Graphic file (type pdf)
 <use src/3_Sim_Schaltung.pdf>
-Package pdftex.def Info: src/3_Sim_Schaltung.pdf  used on input line 93.
+Package pdftex.def Info: src/3_Sim_Schaltung.pdf  used on input line 104.
 (pdftex.def)             Requested size: 273.14923pt x 161.15578pt.
 [6 <./src/3_Sim_Spannungsquelle.png>]
-<src/3_Sim_Parameter.png, id=120, 335.75438pt x 278.54062pt>
+<src/3_Sim_Parameter.png, id=121, 335.75438pt x 278.54062pt>
 File: src/3_Sim_Parameter.png Graphic file (type png)
 <use src/3_Sim_Parameter.png>
-Package pdftex.def Info: src/3_Sim_Parameter.png  used on input line 102.
+Package pdftex.def Info: src/3_Sim_Parameter.png  used on input line 113.
 (pdftex.def)             Requested size: 318.66948pt x 264.36981pt.
 
 
-LaTeX Warning: Citation `src:Scilab' on page 7 undefined on input line 107.
+LaTeX Warning: Citation `src:Scilab' on page 7 undefined on input line 118.
 
 ) [7 <./src/3_Sim_Schaltung.pdf> <./src/3_Sim_Parameter.png>]
-(./4_Versuchsergebnisse.tex [8
+(./4_Versuchsergebnisse.tex
+Overfull \hbox (572.51936pt too wide) in paragraph at lines 12--33
+[] 
+ []
+
+[8
 
 ]
 PGFPlots: reading {src/4_Theo_Ergebnisse_Z.txt}
@@ -1744,39 +1765,34 @@ PGFPlots: reading {src/4_Mess_Ergebnisse_Z.txt}
 PGFPlots: reading {src/4_Mess_Ergebnisse_Y.txt}
  [9] [10] [11]) [12] (./5_Versuchsauswertung.tex) [13
 
-] (./6_Zusammenfassung.tex) [14
+]
+(./6_Zusammenfassung.tex) [14
 
 ]
 Package tocbasic Info: character protrusion at lot deactivated on input line 54
 .
  (./ELNW_PR_Juan1.lot)
-\tf@lot=\write7
-\openout7 = `ELNW_PR_Juan1.lot'.
+\tf@lot=\write8
+\openout8 = `ELNW_PR_Juan1.lot'.
 
  [15
 
 ]
 Package tocbasic Info: character protrusion at lof deactivated on input line 58
 .
+ (./ELNW_PR_Juan1.lof)
+\tf@lof=\write9
+\openout9 = `ELNW_PR_Juan1.lof'.
 
-(./ELNW_PR_Juan1.lof)
-\tf@lof=\write8
-\openout8 = `ELNW_PR_Juan1.lof'.
-
- [16] (./setup/0-5_Quellen.tex
+[16] (./setup/0-5_Quellen.tex
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 27.
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 3
-0.
+) [17]
+\@syc=\write10
+\openout10 = `ELNW_PR_Juan1.syc'.
 
-(/usr/share/texmf/tex/latex/lm/ts1lmr.fd
-File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)) [17]
-\@syc=\write9
-\openout9 = `ELNW_PR_Juan1.syc'.
-
-\@suc=\write10
-\openout10 = `ELNW_PR_Juan1.suc'.
+\@suc=\write11
+\openout11 = `ELNW_PR_Juan1.suc'.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 73.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 73.
@@ -1791,29 +1807,30 @@ LaTeX Warning: There were undefined references.
 
  ) ) 
 Here is how much of TeX's memory you used:
- 57260 strings out of 481239
- 1434385 string characters out of 5920377
- 2305548 words of memory out of 5000000
- 71403 multiletter control sequences out of 15000+600000
- 672487 words of font info for 160 fonts, out of 8000000 for 9000
+ 57824 strings out of 481239
+ 1448613 string characters out of 5920377
+ 2319002 words of memory out of 5000000
+ 71957 multiletter control sequences out of 15000+600000
+ 672862 words of font info for 161 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  79i,22n,107p,10185b,2615s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc
 /dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
-are/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
-mathit.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm
+/lm-rm.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf
 /fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc
 10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/t
-exmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on ELNW_PR_Juan1.pdf (17 pages, 620819 bytes).
+ts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
+tt10.pfb>
+Output written on ELNW_PR_Juan1.pdf (17 pages, 629318 bytes).
 PDF statistics:
- 312 PDF objects out of 1000 (max. 8388607)
- 251 compressed objects within 3 object streams
+ 318 PDF objects out of 1000 (max. 8388607)
+ 256 compressed objects within 3 object streams
  47 named destinations out of 1000 (max. 500000)
- 52363 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 52875 words of extra memory for PDF output out of 61914 (max. 10000000)
 

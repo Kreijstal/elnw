@@ -9,7 +9,14 @@
 %----- Beginn eures Teils -----%
 %------------------------------%
 %
-
+\begin{tabular}[t]{ccccccccccc}%
+   \hline
+    $U_{Epp}$ [V] & $U_{Rpp}$ [V] & $\Delta t$ [s] & $f$ [1/s] & $\phi$ &$|z|$&$|y|$&$\Re(z)$&$\Im(z)$&$\Re(y)$&$\Im(y)$
+    \\
+    \csvreader[late after line=\\]{src/messwertelab1.csv}{}%
+    {\csvlinetotablerow}%
+    \\\hline
+\end{tabular}
 %
 %
 %
