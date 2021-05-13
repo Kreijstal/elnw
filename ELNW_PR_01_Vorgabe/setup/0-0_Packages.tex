@@ -59,6 +59,7 @@
 \usepackage{enumerate}
 \usepackage[]{listofsymbols}
 \usepackage{listings}
+
 \renewcommand{\lstlistlistingname}{Codelistenverzeichnis}
 \usepackage{scrhack}  % Löst Probleme mit veralteten KOMA-Befehlen im 'listings'-Package.
 \usepackage{paralist} % Mehr Optionen beim Erstellen von Aufzählungen ('\enumerate').
@@ -138,9 +139,10 @@
 % Anhang
 \usepackage[title, titletoc]{appendix}
 
-\usepackage{scrlayer-scrpage}				  % KOMA-Paket
-\usepackage[pdfpagelabels]{hyperref}	% Muss ganz zum Schluss geladen werden (s.o.).
-
-\usepackage{csvsimple}
+\usepackage{scrlayer-scrpage}				  % KOMA-Paket\usepackage{csvsimple}
 \usepackage{tabularx}
 \usepackage{siunitx}
+\usepackage{physics}
+\usepackage{minted}
+\usepackage[pdfpagelabels]{hyperref}	% Muss ganz zum Schluss geladen werden (s.o.).
+

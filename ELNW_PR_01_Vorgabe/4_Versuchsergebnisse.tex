@@ -9,14 +9,33 @@
 %----- Beginn eures Teils -----%
 %------------------------------%
 %
-\begin{tabular}[t]{ccccccccccc}%
+\begin{table}
+    \centering
+	\caption{Gemmessene daten, Eingangspannung, Ausgangspannung und $\Delta t$}
+	\label{tab:5_GEM}
+    \begin{tabular}[t]{|cccc|}%
    \hline
-    $U_{Epp}$ [V] & $U_{Rpp}$ [V] & $\Delta t$ [s] & $f$ [1/s] & $\phi$ &$|z|$&$|y|$&$\Re(z)$&$\Im(z)$&$\Re(y)$&$\Im(y)$
-    \\
-    \csvreader[late after line=\\]{src/messwertelab1.csv}{}%
+    $U_{Epp}$ [V] & $U_{Rpp}$ [\si{\volt}] & $\Delta t$ [\si{\second}] & $f$ [\si{\hertz}] %& $\phi$ &$|z|$&$|y|$&$\Re(z)$&$\Im(z)$&$\Re(y)$&$\Im(y)$
+    \\\hline
+    \csvreader[late after line=\\,separator=semicolon]{src/messwertelab1.csv}{}%
     {\csvlinetotablerow}%
     \\\hline
 \end{tabular}
+\end{table}
+\begin{table}
+    \centering
+	\caption{Erzeugene Daten die von der Gemessene Daten berechnet wurden.}
+	\label{tab:6_GEMerzeught}
+    \begin{tabular}[t]{|ccccccccc|}%
+   \hline
+    $\phi$ [Rad]&$\phi$[${}^{\circ}$]&$I_{pp}$ [\si{\milli\ampere}]&$|z|$ [\si{\kilo\ohm}]&$|y|$ [\si{\milli\siemens}]&$\Re(z)$  [\si{\kilo\ohm}]&$\Im(z)$  [\si{\kilo\ohm}]&$\Re(y)$ [\si{\milli\siemens}]&$\Im(y)$ [\si{\milli\siemens}]
+    \\\hline
+    \csvreader[late after line=\\,separator=semicolon]{src/messwertelab1p.csv}{}%
+    {\csvlinetotablerow}%
+    \\\hline
+\end{tabular}
+\end{table}
+
 %
 %
 %

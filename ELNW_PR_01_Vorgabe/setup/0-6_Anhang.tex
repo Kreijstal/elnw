@@ -12,10 +12,56 @@
 %--------------------------------------------------------%
 %--------------------------------------------------------%
 %
-\section{Verwendeter Scilab-Code}
-\label{app:Scilab}
+\section{Verwendeter Matlab-Code}
+\label{app:Matlab}
 %
-\lipsum[5-6]
+Code zum Berechnung der Tabelle \ref{tab:6_GEMerzeught}
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=3pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,breaklines]{matlab}
+messwerte=load('ELNW_PR_01_Vorgabe_Messwerte.mat');
+%das ganze hier ist um , als Dezimaltrenner im Matlab auszudrücken
+df=java.text.DecimalFormat("##0.#####E0", ...
+    java.text.DecimalFormatSymbols.getInstance(java.util.Locale.GERMAN));
+df.setMaximumFractionDigits(3);
+dfs=java.text.DecimalFormat("0", ...
+    java.text.DecimalFormatSymbols.getInstance(java.util.Locale.GERMAN));
+dfs.setMaximumFractionDigits(3);
+fi = @(varargin)varargin{length(varargin)-varargin{1}};
+paren = @(x, varargin) x(varargin{:});
+curly = @(x, varargin) x{varargin{:}};
+asd = @(x, varargin) vertcat(x{:});
+nformat=@(num)(string(fi(log10(num)>4||log10(num)<-2.6,df.format(num), ...
+    dfs.format(num))));
+everyarr= @(lol) asd(arrayfun(nformat,lol,"UniformOutput",false));
+neumess=structfun(everyarr,messwerte,'UniformOutput',false);
+writetable(struct2table(neumess),"messwertelab1.txt" ,'Delimiter',';')
+R=470;
+messwerte.phi=messwerte.dt.*messwerte.f.*2*pi;
+messwerte.Ipp=messwerte.U_Rpp./R;
+messwerte.z=(((messwerte.U_Epp-messwerte.U_Rpp))./((messwerte.Ipp))+R);
+messwerte.y=1./messwerte.z;
+messwerte.rez=messwerte.z.*cos(-messwerte.phi);
+messwerte.imz=messwerte.z.*sin(-messwerte.phi);
+messwerte.rey=messwerte.y.*cos(messwerte.phi);
+messwerte.imy=messwerte.y.*sin(messwerte.phi);
+writetable(table(everyarr(messwerte.phi), ...
+    everyarr(messwerte.phi.*(360/(2*pi))), ...
+    everyarr(messwerte.Ipp*1000), ...
+    everyarr(messwerte.z./1000), ...
+    everyarr(messwerte.y.*1000), ...
+    everyarr(messwerte.rez./1000), ...
+    everyarr(messwerte.imz./1000), ...
+    everyarr(messwerte.rey.*1000), ...
+    everyarr(messwerte.imy.*1000),'VariableNames', ...
+    {'phi in rad','phi in grad','Ipp in mA', ...
+    '|z| in kOhm','|y| in mS','Re(z) in kOhm', ...
+    'Im(z) in kOhm','Re(y) in mS','Im(y) in mS'}), ...
+    "messwertelab1p.txt" ,'Delimiter',';');
+\end{minted}
 %
 %
 %
@@ -27,19 +73,19 @@
 %
 %
 %
-\newpage
-\section{Datenblätter}
-\label{app:Datenblätter}
+%\newpage
+%\section{Datenblätter}
+%\label{app:Datenblätter}
 %
-\lipsum[7-9]
+%\lipsum[7-9]
 %
 %
 %
 % Auch wenn es sich nur um Abbildungssammlungen handelt, muss die Autorenschaft trotzdem gekennzeichnet werden.
 %
-\begin{flushright}
-  \textit{\autorA}
-\end{flushright}
+%\begin{flushright}
+  %\textit{\autorA}
+%\end{flushright}
 %
 %
 %
