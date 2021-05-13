@@ -1,5 +1,5 @@
 {
-    /*"latex-workshop.latex.tools": [
+    "latex-workshop.latex.tools": [
     {
         "name": "latexmk",
         "command": "latexmk",
@@ -13,7 +13,7 @@
             "%DOC%"
         ],
         "env": {}
-    }],*/
+    }],
     "latex-workshop.latex.external.build.args": [],
     "latex-workshop.latex.magic.args": [
         "-shell-escape",
