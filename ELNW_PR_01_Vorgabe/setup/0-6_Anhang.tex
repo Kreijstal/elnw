@@ -37,7 +37,9 @@ asd = @(x, varargin) vertcat(x{:});
 nformat=@(num)(string(fi(log10(num)>4||log10(num)<-2.6,df.format(num), ...
     dfs.format(num))));
 everyarr= @(lol) asd(arrayfun(nformat,lol,"UniformOutput",false));
-neumess=structfun(everyarr,messwerte,'UniformOutput',false);
+messwerte2=messwerte;
+messwerte2.dt=messwerte2.dt*1000000;
+neumess=structfun(everyarr,messwerte2,'UniformOutput',false);
 writetable(struct2table(neumess),"messwertelab1.txt" ,'Delimiter',';')
 R=470;
 messwerte.phi=messwerte.dt.*messwerte.f.*2*pi;
