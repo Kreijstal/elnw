@@ -9,14 +9,24 @@
 %----- Beginn eures Teils -----%
 %------------------------------%
 %
-
+Wir pflegen unsere Messwerten in z.B Matlab an (siehe Anhang für Code), damit können wir die Anderen größen von den Messwerte berechnen, und auch können wir Plotten.
+Die formeln zum berechung die andere großen sind:
+\[U_{App}=U_{Rpp}\]
+\[I_{pp}=\frac{U_{App}}{R}\]
+\[\phi=2 \pi f \Delta t\]
+\[|Z|=\frac{U_{Epp}-U_{App}}{I_{pp}}+R\]
+\[|Y|=\frac{1}{|Z|}\]
+\[\Re(z)=|Z| \cos(-\phi)\]
+\[\Im(z)=|Z| \sin(-\phi)\]
+\[\Re(y)=|Y| \cos(\phi)\]
+\[\Re(y)=|Y| \sin(\phi)\]
 \begin{table} 
     \centering
 	\caption{Gemmessene daten, Eingangspannung, Ausgangspannung und $\Delta t$}
 	\label{tab:5_GEM}
     \begin{tabular}[t]{|cccc|}%
    \hline
-    $U_{Epp}$ [V] & $U_{Rpp}$ [\si{\volt}] & $\Delta t$ [\si{\second}] & $f$ [\si{\hertz}] %& $\phi$ &$|z|$&$|y|$&$\Re(z)$&$\Im(z)$&$\Re(y)$&$\Im(y)$
+    $U_{Epp}$ [V] & $U_{Rpp}$ [\si{\volt}] & $\Delta t$ [\si{\micro\second}] & $f$ [\si{\hertz}] %& $\phi$ &$|z|$&$|y|$&$\Re(z)$&$\Im(z)$&$\Re(y)$&$\Im(y)$
     \\\hline
     \csvreader[late after line=\\,separator=semicolon]{src/messwertelab1.csv}{}%
     {\csvlinetotablerow}%
@@ -29,7 +39,7 @@
 	\label{tab:6_GEMerzeught}
     \begin{tabular}[t]{|ccccccccc|}%
    \hline
-    $\phi$ [Rad]&$\phi$[${}^{\circ}$]&$I_{pp}$ [\si{\milli\ampere}]&$|z|$ [\si{\kilo\ohm}]&$|y|$ [\si{\milli\siemens}]&$\Re(z)$  [\si{\kilo\ohm}]&$\Im(z)$  [\si{\kilo\ohm}]&$\Re(y)$ [\si{\milli\siemens}]&$\Im(y)$ [\si{\milli\siemens}]
+    $\phi$ [Rad]&$\phi$[${}^{\circ}$]&$I_{pp}$ [\si{\milli\ampere}]&$|Z|$ [\si{\kilo\ohm}]&$|Y|$ [\si{\milli\siemens}]&$\Re(Z)$  [\si{\kilo\ohm}]&$\Im(Z)$  [\si{\kilo\ohm}]&$\Re(Y)$ [\si{\milli\siemens}]&$\Im(Y)$ [\si{\milli\siemens}]
     \\\hline
     \csvreader[late after line=\\,separator=semicolon]{src/messwertelab1p.csv}{}%
     {\csvlinetotablerow}%

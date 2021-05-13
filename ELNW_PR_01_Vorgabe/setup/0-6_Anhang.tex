@@ -62,6 +62,58 @@ writetable(table(everyarr(messwerte.phi), ...
     'Im(z) in kOhm','Re(y) in mS','Im(y) in mS'}), ...
     "messwertelab1p.txt" ,'Delimiter',';');
 \end{minted}
+Code für plotten
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=3pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,breaklines]{matlab}
+simulierte=readLTspice("./1lab1.txt","Nyquist")
+figure(2)
+clf
+plot(simulierte(:,4)*1e3,simulierte(:,5)*1e3,"r")
+grid on
+figure(1)
+clf
+hold on
+subplot(1,2,2);
+hold on
+plot(simulierte(:,2),simulierte(:,3)*1e-3)
+subplot(1,2,1);
+hold on
+plot(simulierte(:,2),simulierte(:,3)*1e-3)
+figure(1)
+subplot(1,2,2);
+plot(messwerte.rez,messwerte.imz*1e-3,"c x")
+subplot(1,2,1);
+plot(messwerte.rez,messwerte.imz*1e-3,"c x")
+figure(2)
+hold on
+plot(messwerte.rey.*1e3,messwerte.imy.*1e3,"m x")
+figure(2)
+legend('simulierte Daten','Messwerte')
+title("Admitanz der RC-Reihenschaltung")
+xlabel("Re(Z) im mS")
+ylabel("Im(Z) im mS")
+figure(1)
+legend('simulierte Daten','Messwerte')
+legend('Location','southoutside')
+subplot(1,2,1);
+grid on
+title("Impedanz der RC-Reihenschaltung")
+xlim([0 470*2])
+xlabel("Re(Z) im \Omega")
+ylabel("Im(Z) im k\Omega")
+subplot(1,2,2);
+title("Impedanz - von 0 bis -2k\Omega")
+grid on
+xlabel("Re(Z) im \Omega")
+ylabel("Im(Z) im k\Omega")
+xlim([0 470*2])
+ylim([-2.5 0])
+hold off
+\end{minted}
 %
 %
 %
