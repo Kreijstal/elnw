@@ -21,6 +21,5 @@
         "-interaction=nonstopmode",
         "-file-line-error",
         "%DOC%"
-    ],
-    "python.pythonPath": "/bin/python"
+    ]
 }
