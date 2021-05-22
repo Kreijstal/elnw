@@ -2,7 +2,8 @@ image:
   file: .gitpod.dockerfile
 tasks:
   - init: 'echo no init'
-    command: ''
+   command: cp -r /workspace/elnw/.jupyter /home/gitpod/
+
 
 vscode:
   extensions:
