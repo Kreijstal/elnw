@@ -7,7 +7,30 @@
 %----- Beginn eures Teils -----%
 %------------------------------%
 %
+1)
 
+Die Eingangsspannung ist fast wie eine Rechteckwelle mit einigen kleinen Abweichungen. Es geht von 10V bis 0V und wieder bis zu 10V, die Periode beträgt nur 1ms. Die Spannung von $U_c$ steigt exponentiell exponentiell an (von 0 und auf 10 Volt begrenzt) und nimmt in gleicher Weise periodisch ab. Der Strom nimmt exponentiell von 9 $\si{\milli\ampere}$ auf 0 ab, "springt" dann von 0 auf -6,5 
+$\si{\milli\ampere} $ und geht periodisch wieder auf 0. Wenn Sie die gemessenen Zahlen vergleichen, werden Sie sehen, dass sie anpassen miteinander, aber es gibt Unterschiede in der Messung, zum Beispiel beginnt der Strom bei 10 $\si{\milli\ampere}$ und nicht bei 9 $\si{\milli\ampere}$.
+
+Interpretation:
+
+Wenn die Spannung erhöht wird, benötigt der Kondensator Zeit, um vollständig aufgeladen zu werden, während er aufgeladen wird. Er lässt ein wenig Strom durch, bis er vollständig aufgeladen ist. Deshalb geht der Strom auf 0, wenn keine eingangspannung mehr vorhanden ist Springt in Richtungen und entlädt den Kondensator, wodurch auch die Spannung $U_{C_1}$ verringert wird. Aus diesem Grund gehen die Spannung und der Strom auf 0. Alle diese Prozesse benötigen Zeit, um sich zu entwickeln, und sie sind nicht augenblicklich. Wenn wir eine mathematische Funktion wünschen, die sie beschreibt, müssen wir eine DGL lösen.
+
+
+
+2)
+
+Die Eingangangspannung ist nur eine Rechteckwelle mit einer Periode von 1 ms und geht von 5 V bis 0 V, bei t = 0 beginnt sie bei 5V. Die $U_{C_1}$ Spannung verhält sich sehr ähnlich wie die Spannungskurve des vorherigen Versuchskondensators und erreicht Spitzenwerte bei etwa 4,45 V. Die uC2-Spannung ist jedoch etwas anders, sie sieht aus wie eine gedämpfte $U_{C_1}$-Spannung. Die Kurve ist glatter, weil es keine drastischen Änderungen gibt, aber sie "folgt" der gleichen Form der $U_{C_1}$-Spannung, die Spitze liegt nicht bei 0,5 ms wie bei $U_{C_1}$ aber es ist nach rechts verschoben 10µs und sein Peak ist ungefähr 4$\si{\milli\ampere}$.
+
+
+
+Was die Ströme dieser Schaltung betrifft, so sieht die $I_{C_1}$-Kurve mit der Strom des Experiments sehr ähnlich aus, mit unterschiedlichen Spitzen. $I_{U_E}$ folgt demselben Pfad wie $I_{C_1}$, außer dass es einen höheren Krümmungsradius hat und bei 4 $\si{\milli\ampere}$ beginnt. $I_{C_2}$ kann man als $I_{C_2}$ = $I_{U_E}$-$I_{C_1}$ beschrieben.
+
+Interpretation:
+
+Der Grund, warum $u_{C_2}$ glatter ist, liegt darin, dass je höher der Widerstand, desto niedriger der Peak ist, außerdem bleibt sie Hinten $U_{C_1}$. Sobald die Eingangsspannung abfällt, gelingt es den Kondensator, einige Mikrosekunden lang noch zu laden, weil der Zweite Kondensator strom vom ersten Kondensator bekommt. Bald danach beginnt es jedoch Energie zu verlieren und sie speichern Energie und Strom fallen auf Null, genau wie im ersten Experiment.
+
+Die zweite Kondensator fängt an zu laden wenn $I_{c_1}$ verringert.
 %
 %
 %
