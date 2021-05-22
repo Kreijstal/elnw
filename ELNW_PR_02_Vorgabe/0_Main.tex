@@ -1,0 +1,83 @@
+%-------------------------------------------%
+%--------------- 0_Main.tex ----------------%
+%-------------------------------------------%
+%----- Hauptteil des LaTeX-Projektes: ------%
+%----- Hier werden nacheinander alle -------%
+%----- weiteren tex-Dateien eingefügt. -----%
+%-------------------------------------------%
+%-------------------------------------------%
+%----- Achtung: Kapitelüberschriften -------%
+%-----          und Verweise werden --------%
+%-----          bereits hier erstellt! -----%
+%-------------------------------------------%
+%-------------------------------------------%
+%
+\input{setup/0-0_Packages.tex}
+\input{setup/0-1_Projektdaten.tex}
+\input{setup/0-2_Layout.tex}
+%
+\begin{document}
+\input{setup/0-3_Titelblatt.tex}
+\pagestyle{empty}
+\input{setup/0-4_EidesstattlicheErklaerung.tex}
+%
+\tableofcontents
+%
+\newpage
+\pagestyle{headings}
+%
+
+%
+\section{Versuchsdurchführung}
+\label{sec:Durchführung}
+\input{3_Versuchsdurchfuehrung.tex}
+\clearpage
+%
+\section{Versuchsergebnisse}
+\label{sec:Ergebnisse}
+\input{4_Versuchsergebnisse.tex}
+\clearpage
+%
+\section{Versuchsauswertung}
+\label{sec:Auswertung}
+\input{5_Versuchsauswertung.tex}
+\clearpage
+%
+\section{Zusammenfassung}
+\label{sec:Zusammenfassung}
+\input{6_Zusammenfassung.tex}
+\clearpage
+%
+
+% Tabellenverzeichnis
+\listoftables
+\newpage
+%
+% Abbildungsverzeichnis
+\listoffigures
+\newpage
+%
+% Codelistenverzeichnis (Bitte bei Nichtverwendung auskommentieren!)
+%\lstlistoflistings
+%\newpage
+%
+% Quellenverzeichnis
+\input{setup/0-5_Quellen.tex}
+\newpage
+%
+% Anhang (Bitte bei Nichtverwendung auskommentieren!)
+%\appendices
+%\input{setup/0-6_Anhang.tex}
+%
+\end{document}
+%
+%------------------------------------------%
+%------------------------------------------%
+%----- Autor:   Martin Otto           -----%
+%------------------------------------------%
+%----- FG SENSE, Fak. IV, TU Berlin   -----%
+%------------------------------------------%
+%----- Version: 1.0.0                 -----%
+%----- Datum:   03.05.2018, 11.30 Uhr -----%
+%------------------------------------------%
+%------------------------------------------%
