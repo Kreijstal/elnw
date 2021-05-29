@@ -15,107 +15,92 @@
 \section{Verwendeter Matlab-Code}
 \label{app:Matlab}
 %
-Code zum Berechnung der Tabelle \ref{tab:6_GEMerzeught}
 \begin{minted}[mathescape,
                linenos,
                numbersep=3pt,
                gobble=0,
                frame=lines,
                framesep=2mm,breaklines]{matlab}
-messwerte=load('ELNW_PR_01_Vorgabe_Messwerte.mat');
-%das ganze hier ist um , als Dezimaltrenner im Matlab auszudrücken
-df=java.text.DecimalFormat("##0.#####E0", ...
-    java.text.DecimalFormatSymbols.getInstance(java.util.Locale.GERMAN));
-df.setMaximumFractionDigits(3);
-dfs=java.text.DecimalFormat("0", ...
-    java.text.DecimalFormatSymbols.getInstance(java.util.Locale.GERMAN));
-dfs.setMaximumFractionDigits(3);
-fi = @(varargin)varargin{length(varargin)-varargin{1}};
-paren = @(x, varargin) x(varargin{:});
-curly = @(x, varargin) x{varargin{:}};
-asd = @(x, varargin) vertcat(x{:});
-nformat=@(num)(string(fi(log10(num)>4||log10(num)<-2.6,df.format(num), ...
-    dfs.format(num))));
-everyarr= @(lol) asd(arrayfun(nformat,lol,"UniformOutput",false));
-messwerte2=messwerte;
-messwerte2.dt=messwerte2.dt*1000000;
-neumess=structfun(everyarr,messwerte2,'UniformOutput',false);
-writetable(struct2table(neumess),"messwertelab1.txt" ,'Delimiter',';')
-R=470;
-messwerte.phi=messwerte.dt.*messwerte.f.*2*pi;
-messwerte.Ipp=messwerte.U_Rpp./R;
-messwerte.z=(((messwerte.U_Epp-messwerte.U_Rpp))./((messwerte.Ipp))+R);
-messwerte.y=1./messwerte.z;
-messwerte.rez=messwerte.z.*cos(-messwerte.phi);
-messwerte.imz=messwerte.z.*sin(-messwerte.phi);
-messwerte.rey=messwerte.y.*cos(messwerte.phi);
-messwerte.imy=messwerte.y.*sin(messwerte.phi);
-writetable(table(everyarr(messwerte.phi), ...
-    everyarr(messwerte.phi.*(360/(2*pi))), ...
-    everyarr(messwerte.Ipp*1000), ...
-    everyarr(messwerte.z./1000), ...
-    everyarr(messwerte.y.*1000), ...
-    everyarr(messwerte.rez./1000), ...
-    everyarr(messwerte.imz./1000), ...
-    everyarr(messwerte.rey.*1000), ...
-    everyarr(messwerte.imy.*1000),'VariableNames', ...
-    {'phi in rad','phi in grad','Ipp in mA', ...
-    '|z| in kOhm','|y| in mS','Re(z) in kOhm', ...
-    'Im(z) in kOhm','Re(y) in mS','Im(y) in mS'}), ...
-    "messwertelab1p.txt" ,'Delimiter',';');
-\end{minted}
-Code für plotten
-\begin{minted}[mathescape,
-               linenos,
-               numbersep=3pt,
-               gobble=0,
-               frame=lines,
-               framesep=2mm,breaklines]{matlab}
-simulierte=readLTspice("./1lab1.txt","Nyquist")
-figure(2)
-clf
-plot(simulierte(:,4)*1e3,simulierte(:,5)*1e3,"r")
-grid on
+t=readLTspice("./labor2.txt","Nyquist")
 figure(1)
 clf
+subplot(2,1,1);
+plot(t(:,1)*1e3,t(:,2))
 hold on
-subplot(1,2,2);
-hold on
-plot(simulierte(:,2),simulierte(:,3)*1e-3)
-subplot(1,2,1);
-hold on
-plot(simulierte(:,2),simulierte(:,3)*1e-3)
-figure(1)
-subplot(1,2,2);
-plot(messwerte.rez,messwerte.imz*1e-3,"c x")
-subplot(1,2,1);
-plot(messwerte.rez,messwerte.imz*1e-3,"c x")
-figure(2)
-hold on
-plot(messwerte.rey.*1e3,messwerte.imy.*1e3,"m x")
-figure(2)
-legend('simulierte Daten','Messwerte')
-title("Admitanz der RC-Reihenschaltung")
-xlabel("Re(Z) im mS")
-ylabel("Im(Z) im mS")
-figure(1)
-legend('simulierte Daten','Messwerte')
-legend('Location','southoutside')
-subplot(1,2,1);
+plot(t(:,1)*1e3,t(:,3))
+plot(t(:,1)*1e3,t(:,4))
 grid on
-title("Impedanz der RC-Reihenschaltung")
-xlim([0 470*2])
-xlabel("Re(Z) im \Omega")
-ylabel("Im(Z) im k\Omega")
-subplot(1,2,2);
-title("Impedanz - von 0 bis -2k\Omega")
-grid on
-xlabel("Re(Z) im \Omega")
-ylabel("Im(Z) im k\Omega")
-xlim([0 470*2])
-ylim([-2.5 0])
+xlabel("t in ms")
+ylabel("U in V")
+title("Spannungen der RC-Parallelschaltung" )
+legend('U_E','U_{C_1}',"U_{C_2}")
 hold off
+subplot(2,1,2);
+plot(t(:,1)*1e3,t(:,5)*1e3)
+hold on
+plot(t(:,1)*1e3,t(:,6)*1e3)
+plot(t(:,1)*1e3,t(:,7)*1e3)
+xlabel("t in ms")
+ylabel("I in mA")
+title("Strömungen der RC-Parallelschaltung" )
+legend('I_{U_E}','I_{C_1}',"I_{C_2}")
+grid on
+messwerte=load('ELNW_PR_02_Vorgabe_Messwerte.mat')
+messwerte.I_ges=(messwerte.u_E-messwerte.u_C)
+R = 1e3;
+C = 100e-9;
+%für Idealität
+t_ideal = [-0.1 0 0 0.5 0.5 1]
+uE_ideal = [0 0 10 10 0 0];
+
+% die ideale Aufladevorgang 
+t1 = (0:0.01:0.5)*1e-3;                     
+U_E1 = 10;
+
+uC_ideal_EIN = U_E1 * (1-exp(-1/(R*C) * t1));
+
+% Entladevorgang
+t2 = (0.5:0.01:1) *1e-3;                  
+t0 = 0.5e-3;                               
+U_E2 = 10;                               
+
+uC_ideal_AUS = U_E2 * exp(-1/(R*C) * (t2-t0));
+
+
+tC_ideal = [t1 t2]*1e3;                 
+uC_ideal = [uC_ideal_EIN uC_ideal_AUS];
+
+
+uR_ideal_AUS = 0 - uC_ideal_AUS;
+uR_ideal_EIN = 10 - uC_ideal_EIN;
+uR_ideal = [uR_ideal_EIN uR_ideal_AUS];
+i_ideal = uR_ideal;
+
+
+figure(2)
+clf
+%plot(messwerte.t_mess,'DisplayName','t_mess');
+hold on;
+plot(messwerte.t_mess,messwerte.u_C,'bx','DisplayName','u_C');
+plot(tC_ideal,uC_ideal,'b-','DisplayName','u_C Ideal');
+
+plot(messwerte.t_mess,messwerte.u_E,'rx','DisplayName','u_E');
+plot(t_ideal,uE_ideal,'r-','DisplayName','u_E Ideal');
+ylabel("U in V")
+yyaxis right
+plot(messwerte.t_mess,messwerte.I_ges,'yx','DisplayName','I_{ges} U_R');
+plot(tC_ideal,uR_ideal,'y-','DisplayName','I_{ges} U_R Ideal');
+ylabel("I in mA")
+legend()
+%legend("u_C","u_E","I_{ges}, U_R")
+xlabel("t in ms")
+title("Messwerte für RC-Schaltung")
+hold off;
 \end{minted}
+
+\section{Verwendeter Python-Code}
+\label{app:Python}
+\inputminted{python}{src/reader.py}
 %
 %
 %

@@ -7,6 +7,11 @@
 %----- Beginn eures Teils -----%
 %------------------------------%
 %
+Die Ordnung ist die Anzahl von unabhängige Energiespeichern,
+$L$ für Induktoren, $C$ für Kondensatoren
+
+Die Ordnung bezieht sich auch in diese Fall auf der Ordnung der DGL, die wir lösen muss, um die Spannung als Funktion von Zeit zu bekommen.
+
 \subsection{Messung}
  Die Eingangsspannung ist fast wie eine Rechteckwelle mit einigen kleinen Abweichungen. Es geht von 10V bis 0V und wieder bis zu 10V, die Periode beträgt nur 1ms. Die Spannung von $U_c$ steigt exponentiell exponentiell an (von 0 und auf 10 Volt begrenzt) und nimmt in gleicher Weise periodisch ab. Der Strom nimmt exponentiell von 9 $\si{\milli\ampere}$ auf 0 ab, springt dann von 0 auf $-6,5 
 \si{\milli\ampere} $ und geht periodisch wieder auf 0. Wenn Sie die gemessenen Zahlen vergleichen, werden Sie sehen, dass sie anpassen miteinander, aber es gibt Unterschiede in der Messung, zum Beispiel beginnt der Strom bei 10 $\si{\milli\ampere}$ und nicht bei 9 $\si{\milli\ampere}$.
@@ -28,6 +33,8 @@ Was die Ströme dieser Schaltung betrifft, so sieht die $I_{C_1}$-Kurve mit der 
 Der Grund, warum $u_{C_2}$ glatter ist, liegt darin, dass je höher der Widerstand, desto niedriger der Peak ist, außerdem bleibt sie Hinten $U_{C_1}$. Sobald die Eingangsspannung abfällt, gelingt es den Kondensator, einige Mikrosekunden lang noch zu laden, weil der Zweite Kondensator strom vom ersten Kondensator bekommt. Bald danach beginnt es jedoch Energie zu verlieren und sie speichern Energie und Strom fallen auf Null, genau wie im ersten Experiment.
 
 Die zweite Kondensator fängt an zu laden wenn $I_{c_1}$ verringert.
+
+
 %
 %
 %
