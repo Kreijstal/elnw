@@ -6,7 +6,7 @@ ports:
 - port: 8888
   onOpen: open-browser
 tasks:
-- init: echo hi
+- init: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
   command: cp -r /workspace/elnw/.jupyter /home/gitpod/
 
 vscode:
