@@ -61,8 +61,25 @@
   \label{fig:3_Schaltung}
 \end{figure}
 
+Wir benötigen: 
+\begin{itemize}
+    \item einen Schichtwiderstand ($56\si{\ohm}$), 
+    \item einen Kondensator ($10\si{\nano\farad}$)
+    \item eine Spule ($470\si{\micro\henry}$) 
+    \item ein BNC-BNC-Kabel
+    \item ein Oszilloskop, 
+    \item einen Funktionsgenerator, 
+    \item ein Steckbrett
+\end{itemize}
 
+
+\par Zuerst werden wir die Spule, den Widerstand und den Kondensator in Reihe auf dem Steckbrett und unsere Spannungsquelle ($V_a$ und $V_b$) parallel zu unserer RLC-Reihenschaltung verbunden.
+\par Unser Oszilloskop wird die Spannung des Widerstand messen, daher sollten $V_c$ und Erde parallel zum Widerstand geschaltet werden. Dann verbinden wir unseren Funktionsgenerator einen BNC-BNC-Kabel mit dem Oszilloskop. Der Generator sollte auch mit einem BNC-Doppelbananenkabel, das in $V_a$ und $V_b$ angeschlossen ist, an das Steckbrett angeschlossen werden.
+\par Das Oszilloskop muss unseren Widerstandspannung messen, daher ist es über $V_c$ und Masse mit einem BNC-Doppelbananenkabel verbunden. Im Funktionsgenerator wird eine Sinusfunktion mit einer Spitze-Spitze-Spannung von 10V eingestellt. Wir beginnen mit einer Frequenz von 1 kHz.
+Wir verwenden die Messfunktion unseres Oszilloskops, um die pp-Spannungen von $U_E$ und $U_R$ und die Frequenz zu lesen. \par Wenn die Eingangsspannung im Oszilloskop nicht 10 V beträgt, ändern wir sie in unserem Funktionsgenerator so, dass das Oszilloskop knapp 10 V anzeigt. Gemäß unserem Testblatt notieren wir unsere Spannungen für die folgenden Frequenzen: 1 bis 10 kHz (schritt:1 kHz), 10 bis 65 kHz (schritt:5 kHz), 65, 80 kHz (schritt:1 kHz), 80 bis 110 kHz (schritt:5 kHz),  110 bis 200 kHz (schritt:10 kHz), 250 bis 500 kHz (schritt:50 kHz), 500 bis 1000 kHz (schritt:100 kHz).  
+\par Unsere Resonanzfrequenz sollte bei 73 kHz liegen. Wir sehen, dass die Spannungen in Phase sind. Bei etwa 1 MHz ist $U_R$ viel kleiner und weist eine Phasendifferenz zu $U_E$ auf. Dies geschieht, weil die Spule bei höheren Frequenzen dominiert.
 %
+Wir können die Komponenten als Impedanzen betrachten, die Reihenfolge der Impedanzen spielen keine Rolle.
 %
 %
 \begin{flushright}
@@ -77,12 +94,15 @@
 %
 \subsection{Simulation}
 \label{subsec:3_Simulation}
-%
+
 %------------------------------%
 %----- Beginn eures Teils -----%
 %------------------------------%
 %
+Wir benötigen eine Spannungsquelle mit einer Amplitude von 10V und eine Phasenverschiebung von 0 rad, die geeignet für Wechselstromanalyse ist, (ihre Wert ist \lstinline{AC 10 0}),  Wir brauchen einen eine $470\si{\micro\henry}$ Spule, $56\si{\ohm}$ Widerstand, draht, und einen 10nF Kondensator. Diese werden in Reihe verbunden. Um Spannung zum plotten wir müssen ein vorgegeben Potential bzw GND/Masse abgeben, wir definieren, dass es muss gleich wie die Potential von den negativen Pol der Quelle sein.
 
+Wir wollen auch eine AC analysis Kommando hinzufügen, so:  \lstinline{.ac dec 100 1k 1Meg}
+Führen wir aus, fügen wir Traces hinzu, Wir wählen eine Logarithmische Darstellung aus.
 %
 %
 %
