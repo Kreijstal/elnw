@@ -12,15 +12,54 @@ $L$ für Induktoren, $C$ für Kondensatoren
 
 Die Ordnung bezieht sich auch in diese Fall auf der Ordnung der DGL, die wir lösen muss, um die Spannung als Funktion von Zeit zu bekommen.
 
+
+
+
 \subsection{Messung}
- Die Eingangsspannung ist fast wie eine Rechteckwelle mit einigen kleinen Abweichungen. Es geht von 10V bis 0V und wieder bis zu 10V, die Periode beträgt nur 1ms. Die Spannung von $U_c$ steigt exponentiell exponentiell an (von 0 und auf 10 Volt begrenzt) und nimmt in gleicher Weise periodisch ab. Der Strom nimmt exponentiell von 9 $\si{\milli\ampere}$ auf 0 ab, springt dann von 0 auf $-6,5 
-\si{\milli\ampere} $ und geht periodisch wieder auf 0. Wenn Sie die gemessenen Zahlen vergleichen, werden Sie sehen, dass sie anpassen miteinander, aber es gibt Unterschiede in der Messung, zum Beispiel beginnt der Strom bei 10 $\si{\milli\ampere}$ und nicht bei 9 $\si{\milli\ampere}$.
+ Die Eingangsspannung ist fast wie eine Rechteckwelle mit einigen kleinen Abweichungen. Es geht von 10V bis 0V und wieder bis zu 10V, die Periode beträgt nur $1\si{\milli\second}$. Die Spannung von $U_C$ steigt exponentiell an (von 0 und auf 10 Volt begrenzt) und nimmt in gleicher Weise periodisch ab. Der Strom nimmt exponentiell von 9 $\si{\milli\ampere}$ auf 0 ab, springt dann von 0 auf
+ $-6,5\si{\milli\ampere}$ und geht periodisch wieder auf 0. Wenn Sie die gemessenen Zahlen vergleichen, werden Sie sehen, dass sie anpassen miteinander, aber es gibt Unterschiede in der Messung, zum Beispiel beginnt der Strom bei 10 $\si{\milli\ampere}$ und nicht bei $9 \si{\milli\ampere}$.
 
 \subsubsection{Interpretation}
 
-Wenn die Spannung erhöht wird, benötigt der Kondensator Zeit, um vollständig aufgeladen zu werden, während er aufgeladen wird. Er lässt ein wenig Strom durch, bis er vollständig aufgeladen ist. Deshalb geht der Strom auf 0, wenn keine eingangspannung mehr vorhanden ist Springt in Richtungen und entlädt den Kondensator, wodurch auch die Spannung $U_{C_1}$ verringert wird. Aus diesem Grund gehen die Spannung und der Strom auf 0. Alle diese Prozesse benötigen Zeit, um sich zu entwickeln, und sie sind nicht augenblicklich. Wenn wir eine mathematische Funktion wünschen, die sie beschreibt, müssen wir eine DGL lösen.
+Wenn die Spannung erhöht wird, benötigt der Kondensator Zeit, um vollständig aufgeladen zu werden, während er aufgeladen wird. Er lässt ein wenig Strom durch, bis er vollständig aufgeladen ist. Deshalb geht der Strom auf 0, wenn keine Dingangspannung mehr vorhanden ist Springt in Richtungen und entlädt den Kondensator, wodurch auch die Spannung $U_{C_1}$ verringert wird. Aus diesem Grund gehen die Spannung und der Strom auf 0. Alle diese Prozesse benötigen Zeit, um sich zu entwickeln, und sie sind nicht augenblicklich. Wenn wir eine mathematische Funktion wünschen, die sie beschreibt, müssen wir eine DGL lösen.
 
-\subsection{Simulation} Die Eingangangspannung ist nur eine Rechteckwelle mit einer Periode von 1 ms und geht von 5 V bis 0 V, bei t = 0 beginnt sie bei 5V. Die $U_{C_1}$ Spannung verhält sich sehr ähnlich wie die Spannungskurve des vorherigen Versuchskondensators und erreicht Spitzenwerte bei etwa 4,45 V. Die uC2-Spannung ist jedoch etwas anders, sie sieht aus wie eine gedämpfte $U_{C_1}$-Spannung. Die Kurve ist glatter, weil es keine drastischen Änderungen gibt, aber sie "folgt" der gleichen Form der $U_{C_1}$-Spannung, die Spitze liegt nicht bei 0,5 ms wie bei $U_{C_1}$ aber es ist nach rechts verschoben 10µs und sein Peak ist ungefähr 4$\si{\milli\ampere}$.
+Wir verwenden Maschenregel um diese Formel zu kriegen
+\[u_E(t)=u_C(t)+u_r(t)\]
+\[u_E(t)=u_C(t)+R i_r(t)\]
+Wegen Knotengesetz
+\[u_E(t)=u_C(t)+R i(t)\]
+Wegen $u_C'(t)=\frac{i(t)}{RC}$
+\[u_E(t)=C R u_C'(t)+u_C(t)\]
+die Inhomogenität in der Folgendes DGL:
+\[\frac{u_C(t)}{R C}+u_C'(t)=\frac{u_E(t)}{RC}\]
+Die homogene Anteil:
+\[f'(t)+\frac{f(t)}{RC}=0\] läss sich berechnen
+\begin{align*}
+    f'(t)&=-\frac{f(t)}{RC}\\
+   \frac{f'(t)}{f(t)}&=-\frac{1}{RC}\\
+   \int \frac{f'(t)}{f(t)} \,   dt&=-\int \frac{1}{RC} \,   dt\\ 
+   \int \frac{1}{f(t)} \,   df(t)&=-\frac{t}{RC}+c\\
+   \log f(t)&=-\frac{t}{RC}+c\\
+   f(t)&=e^{-\frac{t}{RC}+c}\\
+   f(t)&=\tilde{c}e^{-\frac{t}{RC}}
+   \end{align*}
+Wir verwenden den Ansatz der rechte Seite. \cite{src:lindgl}
+
+Die partikuläre lösung ist dann\\
+$g(t)=A_0,A_0\,\in\,\mathbb R$
+\[u_C(t)=f(t)+g(t)\]
+\[u_C'(t)+\frac{1}{R C}u_C(t)=\frac{1}{RC}u_E(t)\]
+Da $u_E(t)=u_E$ konstant ist.
+\[f'(t)+\frac{1}{R C}(f(t)+g(t))=\frac{1}{RC}u_E \]
+\[\frac{1}{R C}(g(t))=\frac{1}{RC}u_E\]
+\[\frac{1}{R C}(A_0)=\frac{1}{RC}u_E\]
+\[A_0=u_E\]
+mit Anfangbedingung $u_C(0)=0$ ist $\tilde{c}=-u_E$
+die Lösung dafür ist \[u_C(t)=u_E\qty(1-e^{-t/RC}).\]
+
+
+Also die Inhomogenität verursacht dass die Spannung wächst langsam (umgekehrt exponential) von $0$ bis $u_E$ wenn $t\rightarrow\infty$.\\
+\subsection{Simulation} Die Eingangangspannung ist nur eine Rechteckwelle mit einer Periode von $1\si{\milli\second}$ und geht von $5\si{\volt}$ bis 0 V, bei $t = 0$ beginnt sie bei $5\si{\volt}$. Die $U_{C_1}$ Spannung verhält sich sehr ähnlich wie die Spannungskurve des vorherigen Versuchskondensators und erreicht Spitzenwerte bei etwa $4,45\si{\volt}$. Die uC2-Spannung ist jedoch etwas anders, sie sieht aus wie eine gedämpfte $U_{C_1}$-Spannung. Die Kurve ist glatter, weil es keine drastischen Änderungen gibt, aber sie "folgt" der gleichen Form der $U_{C_1}$-Spannung, die Spitze liegt nicht bei 0,5 ms wie bei $U_{C_1}$ aber es ist nach rechts verschoben 10µs und sein Peak ist ungefähr 4$\si{\milli\ampere}$.
 
 
 
@@ -38,9 +77,9 @@ Die zweite Kondensator fängt an zu laden wenn $I_{c_1}$ verringert.
 %
 %
 %
-%\begin{flushright}
-  %\textit{\autorA}
-%\end{flushright}
+\begin{flushright}
+  \textit{\autorA}
+\end{flushright}
 %
 %------------------------------%
 %------ Ende eures Teils ------%

@@ -6,10 +6,10 @@ ports:
 - port: 8888
   onOpen: open-browser
 tasks:
-- init: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+- init: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash && source .bashrc 
   command: cp -r /workspace/elnw/.jupyter /home/gitpod/
 
 vscode:
   extensions:
-    - efoerster.texlab@2.2.1:58163fe2a360fec2e5f6b24c6e34a5af
-    - james-yu.latex-workshop@8.18.0:765947dfaa1d20a4162c9b5778bc1c30
+    - efoerster.texlab
+    - james-yu.latex-workshop
