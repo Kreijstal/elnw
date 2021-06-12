@@ -1,0 +1,98 @@
+%--------------------------------------%
+%----- 3_Versuchsdurchführung.tex -----%
+%--------------------------------------%
+%--------------------------------------%
+%
+\subsection{Messung}
+\label{subsec:3_Messung}
+%
+%------------------------------%
+%----- Beginn eures Teils -----%
+%------------------------------%
+%
+\begin{figure}[H]
+  \Large
+  \centering
+  \begin{tikzpicture}[circuit ee IEC, font = \sffamily]
+    \matrix(M)[
+      matrix of nodes, nodes in empty cells,
+      inner sep = 0pt, outer sep = -.1\pgflinewidth,
+      column sep = 20mm, row sep = 15mm,
+      nodes = {minimum width = 0pt}
+      ]
+    {
+      & & & & & \\
+      & & & & & \\
+      & & & & & \\
+      & & & & & \\
+      & & & & & \\
+    };
+    %
+    \draw[circuit symbol unit = 15pt]
+      (M-2-2) to [voltage source] (M-5-2);
+    \draw[circuit symbol unit = 15pt]
+      (M-2-2) to [resistor = {info = $R$, info' = \SI{56}{\ohm}}] (M-2-4);
+    \draw[circuit symbol unit = 15pt]
+      (M-2-4) to [capacitor = {info = $C$, info' = \SI{10}{\nano\farad}}] (M-2-6);
+    \draw[circuit symbol unit = 15pt]
+      (M-2-6) to [inductor = {info = $L$, info' = \SI{470}{\micro\henry}}] (M-5-6);
+    %
+    \draw (M-5-2)--(M-5-6);
+    %
+    \draw[UPfeil = 6mm]
+      ([xshift = -9mm]M-2-2.east)--([xshift = -9mm]M-5-2.east)
+	  node[midway, left]{$\underline{U}_\mathrm{E}$};
+    \draw[UPfeil = 16mm]
+      ([yshift = 13mm]M-2-2.south)--([yshift = 13mm]M-2-4.south)
+      node[midway, above]{$\underline{U}_\mathrm{R}$};
+    \draw[UPfeil = 16mm]
+      ([yshift = 13mm]M-2-4.south)--([yshift = 13mm]M-2-6.south)
+      node[midway, above]{$\underline{U}_\mathrm{C}$};
+
+    \draw[UPfeil = 6mm]
+      ([xshift = 14mm]M-2-6.west)--([xshift = 14mm]M-5-6.west)
+      node[midway, right]{$\underline{U}_\mathrm{L}$};
+    \draw[IPfeil = 4mm]
+      ([xshift = 6mm]M-2-3.center)--([xshift = 6mm]M-2-4.center)
+      node[midway, above]{$\underline{I}$};
+    %
+  \end{tikzpicture}
+  \caption{Schaltbild der untersuchten RLC-Reihenschaltung}
+  \label{fig:3_Schaltung}
+\end{figure}
+
+
+%
+%
+%
+\begin{flushright}
+  \textit{\autorA}
+\end{flushright}
+%
+%------------------------------%
+%------ Ende eures Teils ------%
+%------------------------------%
+%
+%
+%
+\subsection{Simulation}
+\label{subsec:3_Simulation}
+%
+%------------------------------%
+%----- Beginn eures Teils -----%
+%------------------------------%
+%
+
+%
+%
+%
+%\begin{flushright}
+  %\textit{\autorA}
+%\end{flushright}
+%
+%------------------------------%
+%------ Ende eures Teils ------%
+%------------------------------%
+%
+%
+%

@@ -1,0 +1,6 @@
+%
+% Hier sollen die Messdaten für die Frequenzen (1, ..., 65) kHZ eingetragen werden.
+% Formatierung wie in LaTeX, also für jede Zeile:
+% "<Wert> & <Wert> & <Wert> & <Wert> & <Wert>\\"
+%
+0 & 0 & 0 & 0 & 0\\
