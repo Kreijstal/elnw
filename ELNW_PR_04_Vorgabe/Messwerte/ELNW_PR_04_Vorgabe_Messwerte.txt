@@ -1,0 +1,6 @@
+Box 	& Messung für 		& $U_\mathrm{E,pp}$ & $U_\mathrm{1,pp}$ & $U_\mathrm{2,pp}$ 	& $\Delta t_\mathrm{U1}$ 	& $\Delta t_\mathrm{U2}$ \\ \hline\hline
+
+Nr. 1 	& $\underline{Z}_{11}$ 	& \SI{19,84}{\volt} & \SI{9,44}{\volt}  & - 			& \SI{0}{\micro\second}		& - \\
+	& $\underline{Z}_{21}$ 	& \SI{19,84}{\volt} & - 		& \SI{4,76}{\volt} 	& - 				& \SI{0}{\micro\second} \\
+	& $\underline{Z}_{22}$ 	& \SI{20,00}{\volt} & - 		& \SI{13,76}{\volt} 	& - 				& \SI{+3,920}{\micro\second} \\
+	& $\underline{Z}_{12}$ 	& \SI{20,00}{\volt} & \SI{4,68}{\volt}  & - 			& \SI{-5,640}{\micro\second} 	& - \\ \hline

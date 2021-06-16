@@ -1,0 +1,109 @@
+%-----------------------------------------------------%
+%------------------ 0-2_Layout.tex -------------------%
+%-----------------------------------------------------%
+%----- Hier werden Kopf- und Fußzeile definiert. -----%
+%----- Außerdem können Befehle erstellt werden, ------%
+%----- die euch später im Hauptteil das Leben --------%
+%----- deutlich einfacher machen können. -------------%
+%-----------------------------------------------------%
+%-----------------------------------------------------%
+%
+% Kopf- und Fußzeile
+\pagestyle{scrheadings}							% Seitenstil
+\setkomafont{pagehead}{\normalfont}
+\clearscrheadfoot										% Lösche alle Voreinstellungen.
+\automark{section}									% Setze Automark auf aktuellen Abschnitt.
+\ihead{\titel}                      % Schreibe Thema in die Kopfzeile (innen).
+% \chead{\headmark}								  % Schreibe Abschnittsüberschrift in die Kopfzeile (Mitte).
+\ohead{\autorA}					            % Schreibe Namen in die Kopfzeile (außen).
+\cfoot{\pagemark}										% Erstelle (zentrale) Seitennummern.
+
+% Hier können z.B. bequem neue Einheiten für das 'siunitx'-Package definiert werden.
+% Passt auf, dass ihr dabei keine vorhandenen Einheiten überschreibt!
+%
+% \DeclareSIUnit{\voltampere}{VA}
+% \DeclareSIUnit{\ah}{Ah}
+% \DeclareSIUnit{\wh}{Wh}
+
+% Mit Befehlen können z.B. Abkürzungen für langwierige Formeln o.Ä. erstellt werden.
+% Passt auch hier auf, dass ihr nichts überschreibt!
+%
+% \newcommand{\uin}{\ensuremath{\underline{U}_\mathrm{e}}}
+% \newcommand{\uout}{\ensuremath{\underline{U}_\mathrm{a}}}
+
+% Mit dem 'tikz'-Package könnt ihr u.a. (Ersatz-)Schaltbilder zeichnen. Damit die einigermaßen gut aussehen, kann man z.B. Vorlagen für Schaltsymbole, Spannungs- und Strompfeile definieren. Bitte lasst die vorgegebenen Einstellungen stehen, weil spätere Protokollvorgaben darauf aufbauen werden!
+%
+%--- Ordentliche Proportionen für passive Grundelemente ---%
+%
+\tikzset
+{
+  resistor IEC graphic/.style =
+  {
+    circuit symbol open,
+    circuit symbol size = width 2.5 height 1,
+    shape = rectangle ee,
+    transform shape
+  },
+  var resistor IEC graphic/.style =
+  {
+    circuit symbol lines,
+    circuit symbol size = width 3.6 height 0.8,
+    shape = var resistor IEC,
+    transform shape,
+    outer sep = 0pt,
+    cap = round
+  },
+  inductor IEC graphic/.style =
+  {
+    circuit symbol lines,
+    circuit symbol size = width 3 height .5,
+    transform shape,
+    shape = inductor IEC,
+    outer sep = 0pt,
+    cap = round
+  },
+  var inductor IEC graphic/.style =
+  {
+    circuit symbol filled,
+    circuit symbol size = width 2.5 height 1
+    transform shape,
+    shape = rectangle ee
+  },
+  capacitor IEC graphic/.style =
+  {
+    circuit symbol lines,
+    circuit symbol size = width .5 height 1.5,
+    transform shape,
+    shape = capacitor IEC
+  }
+}
+%
+% --- Messgeräte ---%
+%
+\tikzset
+{
+  circuit declare symbol = amperemeter,
+  set amperemeter graphic =
+  {
+    draw,
+    generic circle IEC,
+    minimum size = 10mm,
+    info = center:A
+  },
+  circuit declare symbol = voltmeter,
+  set voltmeter graphic =
+  {
+    draw,
+    generic circle IEC,
+    minimum size=10mm,
+    info = center:V
+  }
+}
+%
+%--- Pfeile ---%
+%
+\tikzset{
+  DickerPfeil/.style = {ultra thick, shorten >= #1, shorten <= #1, -{Straight Barb[angle' = 60, scale = 1.5]}},
+	UPfeil/.style = {blue, DickerPfeil = #1, font = {\sffamily\itshape}},
+  IPfeil/.style = {red, DickerPfeil = #1, font = {\ttfamily\itshape}}
+}
