@@ -52,9 +52,20 @@ Der Versuch besteht aus zwei Teilen.
 %----- Beginn eures Teils -----%
 %------------------------------%
 %
-\includepdf[pages={1}]{src/Schaltung4-1.pdf}
+\begin{figure}[H]
+    \centering
+    \includepdf[pages={1},scale=.8,pagecommand={}]{src/Schaltung4-1.pdf}
+    \caption{LTSpice Simulation 1ste Tor}
+    \label{fig:LTSpice1}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includepdf[pages={2},scale=.8,pagecommand={}]{src/Schaltung4-1.pdf}
+    \caption{LTSpice Simulation 2te Tor}
+    \label{fig:LTspice2}
+\end{figure}
 %
-%
+Für die Simulation haben wir zwei Schaltungen gebaut, eine für das erste Tor und eine für das zweite Tor, mit der wir die folgenden Diagramme plotten können
 %
 \begin{flushright}
   \textit{\autorA}
