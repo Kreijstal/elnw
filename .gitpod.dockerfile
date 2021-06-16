@@ -18,6 +18,6 @@ RUN apt-get update \
 # install Node.JS 12
 &&  curl -sSL https://deb.nodesource.com/setup_12.x | bash - \
 &&  apt-get install -y nodejs  python-pygments mongodb python3-venv redis
-RUN apt-get update && apt-get install -y python-pygments mongodb nodejs python3-venv redis
+#RUN apt-get update && apt-get install -y python-pygments mongodb nodejs python3-venv redis
 #RUN apt-get install python-pygments
 USER gitpod
