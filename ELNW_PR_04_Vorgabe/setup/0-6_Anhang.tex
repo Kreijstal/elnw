@@ -21,85 +21,42 @@
                gobble=0,
                frame=lines,
                framesep=2mm,breaklines]{matlab}
-t=readLTspice("./labor2.txt","Nyquist")
 figure(1)
 clf
-subplot(2,1,1);
-plot(t(:,1)*1e3,t(:,2))
 hold on
-plot(t(:,1)*1e3,t(:,3))
-plot(t(:,1)*1e3,t(:,4))
-grid on
-xlabel("t in ms")
-ylabel("U in V")
-title("Spannungen der RC-Parallelschaltung" )
-legend('U_E','U_{C_1}',"U_{C_2}")
-hold off
-subplot(2,1,2);
-plot(t(:,1)*1e3,t(:,5)*1e3)
-hold on
-plot(t(:,1)*1e3,t(:,6)*1e3)
-plot(t(:,1)*1e3,t(:,7)*1e3)
-xlabel("t in ms")
-ylabel("I in mA")
-title("Strömungen der RC-Parallelschaltung" )
-legend('I_{U_E}','I_{C_1}',"I_{C_2}")
-grid on
-messwerte=load('ELNW_PR_02_Vorgabe_Messwerte.mat')
-messwerte.I_ges=(messwerte.u_E-messwerte.u_C)
-R = 1e3;
-C = 100e-9;
-%für Idealität
-t_ideal = [-0.1 0 0 0.5 0.5 1]
-uE_ideal = [0 0 10 10 0 0];
+plot(t1.data(:,1) ,t1.data(:,3))
+plot(t1.data(:,1) ,t1.data(:,2))
 
-% die ideale Aufladevorgang 
-t1 = (0:0.01:0.5)*1e-3;                     
-U_E1 = 10;
-
-uC_ideal_EIN = U_E1 * (1-exp(-1/(R*C) * t1));
-
-% Entladevorgang
-t2 = (0.5:0.01:1) *1e-3;                  
-t0 = 0.5e-3;                               
-U_E2 = 10;                               
-
-uC_ideal_AUS = U_E2 * exp(-1/(R*C) * (t2-t0));
-
-
-tC_ideal = [t1 t2]*1e3;                 
-uC_ideal = [uC_ideal_EIN uC_ideal_AUS];
-
-
-uR_ideal_AUS = 0 - uC_ideal_AUS;
-uR_ideal_EIN = 10 - uC_ideal_EIN;
-uR_ideal = [uR_ideal_EIN uR_ideal_AUS];
-i_ideal = uR_ideal;
-
-
-figure(2)
-clf
-%plot(messwerte.t_mess,'DisplayName','t_mess');
-hold on;
-plot(messwerte.t_mess,messwerte.u_C,'bx','DisplayName','u_C');
-plot(tC_ideal,uC_ideal,'b-','DisplayName','u_C Ideal');
-
-plot(messwerte.t_mess,messwerte.u_E,'rx','DisplayName','u_E');
-plot(t_ideal,uE_ideal,'r-','DisplayName','u_E Ideal');
+%nonsense plot(t1.data(:,1) ,t1.data(:,2))
+title("Eingangs und Ausgangstrome - U_2")
+xlabel("t in s")
 ylabel("U in V")
 yyaxis right
-plot(messwerte.t_mess,messwerte.I_ges,'yx','DisplayName','I_{ges} U_R');
-plot(tC_ideal,uR_ideal,'y-','DisplayName','I_{ges} U_R Ideal');
-ylabel("I in mA")
-legend()
-%legend("u_C","u_E","I_{ges}, U_R")
-xlabel("t in ms")
-title("Messwerte für RC-Schaltung")
-hold off;
+ylabel("I in A")
+plot(t1.data(:,1) ,t1.data(:,6))
+plot(t1.data(:,1) ,t1.data(:,10))
+legend("U_2" ,"U_1","I_{ein}","I_{aus}")
+grid on
+figure(2)
+clf
+hold on
+plot(t2(:,1) ,t2(:,2))
+plot(t2(:,1) ,t2(:,3))
+
+%nonsense plot(t1.data(:,1) ,t1.data(:,2))
+title("Eingangs und Ausgangstrome - U_1")
+xlabel("t in s")
+ylabel("U in V")
+yyaxis right
+ylabel("I in A")
+plot(t2(:,1) ,t2(:,10))
+plot(t2(:,1) ,t2(:,6))
+legend("U_1","U_2","I_{ein}","I_{aus}")
+grid on
 \end{minted}
 
-\section{Verwendeter Python-Code}
-\label{app:Python}
+%\section{Verwendeter Python-Code}
+%\label{app:Python}
 %\inputminted{python}{src/reader.py}
 %
 %

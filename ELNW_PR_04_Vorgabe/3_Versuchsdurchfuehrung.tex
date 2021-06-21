@@ -29,9 +29,9 @@ Um die Spannung zwischen 2 beliebigen Polen zu messen, schließen wir beim Messe
 Um die Spitze-Spitze-Werte anzuzeigen, drückt man  \enquote{$V_{pp}$}. Für den Zeitunterschied: \enquote{Timedelay}
 
 Der Versuch besteht aus zwei Teilen.
-\par Im ersten Teil wird der Funktionsgenerator über einen  ($1\si{\kilo\ohm}$) Shunt-Widerstand mit dem ersten Gate der Blackbox verbunden. Mit dieser Konstruktion können wir die Impedanzmatrixeinträge $Z_{11}$ und $Z_{21}$ bestimmen. Mit dem Oszilloskop wird die Potentialdifferenz des Funktionsgenerators ($U_{Epp}$) und der Pole des ersten Tores ($U_{1pp})$ gemessen. Mit der Differenz dieser beiden Spannungen können wir den Shunt-Widerstand bestimmen. Mit der Zeitdifferenz dt11 zwischen $U_{Epp}$ und $U_{1pp}$ kann die Phase des Stromes berechnet werden, danach wird das zweite Tor angeschlossen um $U_{2pp}$ und $\delta t_{21}$ zu bestimmen.
+\par Im ersten Teil wird der Funktionsgenerator über einen  ($1\si{\kilo\ohm}$) Shunt-Widerstand mit dem ersten Gate der Blackbox verbunden. Mit dieser Konstruktion können wir die Impedanzmatrixeinträge $Z_{11}$ und $Z_{21}$ bestimmen. Mit dem Oszilloskop wird die Potentialdifferenz des Funktionsgenerators ($U_{Epp}$) und der Pole des ersten Tores ($U_{1pp})$ gemessen. Mit der Differenz dieser beiden Spannungen können wir den Shunt-Widerstand bestimmen. Mit der Zeitdifferenz $\Delta t_{11}$ zwischen $U_{Epp}$ und $U_{1pp}$ kann die Phase des Stromes berechnet werden, danach wird das zweite Tor angeschlossen um $U_{2pp}$ und $\Delta t_{21}$ zu bestimmen.
 
-\par Der zweite Teil ist analog zum ersten Teil, wir wiederholen alle Schritte, die wir für den ersten Teil für das zweite Tor gemacht haben, aber wir ändern $U_{1pp}$ mit $U_{2pp}$ und bestimmen so $Z_{12}$, $Z_{22}$ und $\delta t_{12}$.
+\par Der zweite Teil ist analog zum ersten Teil, wir wiederholen alle Schritte, die wir für den ersten Teil für das zweite Tor gemacht haben, aber wir ändern $U_{1pp}$ mit $U_{2pp}$ und bestimmen so $Z_{12}$, $Z_{22}$ und $\Delta t_{12}$.
 %
 %
 %
@@ -58,14 +58,27 @@ Der Versuch besteht aus zwei Teilen.
     \caption{LTSpice Simulation 1ste Tor}
     \label{fig:LTSpice1}
 \end{figure}
+\newpage
 \begin{figure}[H]
     \centering
     \includepdf[pages={2},scale=.8,pagecommand={}]{src/Schaltung4-1.pdf}
     \caption{LTSpice Simulation 2te Tor}
     \label{fig:LTspice2}
 \end{figure}
-%
-Für die Simulation haben wir zwei Schaltungen gebaut, eine für das erste Tor und eine für das zweite Tor, mit der wir die folgenden Diagramme plotten können
+\newpage
+Für die Simulation haben wir zwei Schaltungen gebaut, eine für das erste Tor und eine für das zweite Tor, Wir führen eine "Transient" simulation durch, von nur $100\si{\micro\second}$. Um die Spannungen bzw Strome (beispielweise $U_1,I_1$) können wir in LTSpice Maschenregel bzw Knotenregel benutzen, exportieren wir diese Werte, mit denen wir die folgenden Diagramme plotten können
+\begin{figure}[H]
+    \centering
+    \includegraphics[clip,trim=20pt 200pt 0 200pt,scale=.8]{src/einausgangU_1.pdf}
+    \caption{Eingangspannung $U_1$}
+    \label{fig:Simulationplot}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[clip,trim=50pt 200pt 20pt 200pt,scale=.8]{src/einausgangU_2.pdf}
+    \caption{Eingangspannung $U_2$}
+    \label{fig:Simulationplot2}
+\end{figure}
 %
 \begin{flushright}
   \textit{\autorA}

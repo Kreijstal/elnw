@@ -2,7 +2,7 @@
 %----- 4_Versuchsergebnisse.tex -----%
 %------------------------------------%
 %------------------------------------%
-%
+%pdflatex -interaction=nonstopmode --shell-escape 
 \subsection{Messdaten: Impedanzmatrix}
 \label{subsec:4_Daten}
 %
@@ -11,11 +11,157 @@
 %------------------------------%
 %
 %
+Wir haben die folgenden Messungen:
+\begin{table}[H]
+  \small
+  \centering
+	\caption{Messergebnisse}
+	\label{tab:Messdaten}
+	\begin{tabular}{rrrrrrr}
+	  \toprule
+		%
+
+    \input{Messwerte/ELNW_PR_04_Vorgabe_Messwerte.txt}
+
+    \midrule
+
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+Um die Impedanzmatrix zu berechnen können wir folgenden Formeln anwenden.
+\[\underline{Z}_{11} = \frac{\underline{U}_1}{\underline{I}_{1}}\Bigr|_{\underline{I}_2=0} \]
+\[\underline{Z}_{21} = \frac{\underline{U}_2}{\underline{I}_{1}}\Bigr|_{\underline{I}_2=0} \]
+\[\underline{Z}_{12} = \frac{\underline{U}_1}{\underline{I}_{2}}\Bigr|_{\underline{I}_1=0} \]
+ \[\underline{Z}_{22} = \frac{\underline{U}_2}{\underline{I}_{2}}\Bigr|_{\underline{I}_1=0} \]
 %
-%
-%\begin{flushright}
-%\textit{\autorA}
-%\end{flushright}
+und
+\[\phi_{phase}=2\pi f \Delta t\]
+\[ \underline{U}_1 = \frac{1}{2} U_{1,pp}\ee^{\imag \omega \Delta t_1} = \frac{1}{2} U_{1,pp}\ee^{\imag 2 \pi f \Delta t_1} \]
+\[ \underline{I}_1 = \frac{\underline{U}_E-\underline{U}_1}{R_{Shunt}} =(\frac{1}{2})\frac{\underline{U}_{E,pp}-\underline{U}_{1,pp}\ee^{\imag  \omega \Delta t_1}}{R_{Shunt}} \]
+\[\begin{pmatrix}
+ Z_{11} & Z_{12} \\
+ Z_{21} & Z_{22} \\
+\end{pmatrix}=\begin{pmatrix}
+    \frac{\underline{U}_1}{\underline{I}_{1}}\Bigr|_{\underline{I}_2=0}&
+    \frac{\underline{U}_1}{\underline{I}_{2}}\Bigr|_{\underline{I}_1=0}\\
+    \frac{\underline{U}_2}{\underline{I}_{1}}\Bigr|_{\underline{I}_2=0}&
+    \frac{\underline{U}_2}{\underline{I}_{2}}\Bigr|_{\underline{I}_1=0} 
+\end{pmatrix}
+\]
+\[\begin{pmatrix}
+ Z_{11} & Z_{12} \\
+ Z_{21} & Z_{22} \\
+\end{pmatrix}=\begin{pmatrix}
+    \frac{\frac{1}{2} U_{{1,pp}_{\mathrm{1}}}\ee^{\imag 2 \pi f \Delta t_{1_\mathrm{1}}} }{\frac{1}{2}\frac{\underline{U}_{{E,pp}_{\mathrm{1}}}-\underline{U}_{{1,pp}_{\mathrm{1}}}\ee^{\imag  \omega \Delta {t_1}_{\mathrm{1}}}}{R_{Shunt}}}&
+    \frac{\frac{1}{2} U_{{1,pp}_{\mathrm{2}}}\ee^{\imag 2 \pi f \Delta t_{1_\mathrm{2}}} }{\frac{1}{2}\frac{\underline{U}_{{E,pp}_{\mathrm{2}}}-\underline{U}_{{2,pp}_{\mathrm{2}}}\ee^{\imag  \omega \Delta {t_2}_{\mathrm{2}}}}{R_{Shunt}}}\\
+    \frac{\frac{1}{2} U_{{2,pp}_{\mathrm{1}}}\ee^{\imag 2 \pi f \Delta t_{2_\mathrm{1}}} }{\frac{1}{2}\frac{\underline{U}_{{E,pp}_{\mathrm{1}}}-\underline{U}_{{1,pp}_{\mathrm{1}}}\ee^{\imag  \omega \Delta {t_1}_{\mathrm{1}}}}{R_{Shunt}}}&
+    \frac{\frac{1}{2} U_{{2,pp}_{\mathrm{2}}}\ee^{\imag 2 \pi f \Delta t_{2_\mathrm{2}}} }{\frac{1}{2}\frac{\underline{U}_{{E,pp}_{\mathrm{2}}}-\underline{U}_{{2,pp}_{\mathrm{2}}}\ee^{\imag  \omega \Delta {t_2}_{\mathrm{2}}}}{R_{Shunt}}} 
+\end{pmatrix}
+\]
+\[\begin{pmatrix}
+ Z_{11} & Z_{12} \\
+ Z_{21} & Z_{22} \\
+\end{pmatrix}=\begin{pmatrix}
+    \frac{U_{{1,pp}_{\mathrm{1}}}\ee^{\imag 2 \pi f \Delta t_{1_\mathrm{1}}} }{\frac{\underline{U}_{{E,pp}_{\mathrm{1}}}-\underline{U}_{{1,pp}_{\mathrm{1}}}\ee^{\imag  \omega \Delta {t_1}_{\mathrm{1}}}}{R_{Shunt}}}&
+    \frac{U_{{1,pp}_{\mathrm{2}}}\ee^{\imag 2 \pi f \Delta t_{1_\mathrm{2}}} }{\frac{\underline{U}_{{E,pp}_{\mathrm{2}}}-\underline{U}_{{2,pp}_{\mathrm{2}}}\ee^{\imag  \omega \Delta {t_2}_{\mathrm{2}}}}{R_{Shunt}}}\\
+    \frac{ U_{{2,pp}_{\mathrm{1}}}\ee^{\imag 2 \pi f \Delta t_{2_\mathrm{1}}} }{\frac{\underline{U}_{{E,pp}_{\mathrm{1}}}-\underline{U}_{{1,pp}_{\mathrm{1}}}\ee^{\imag  \omega \Delta {t_1}_{\mathrm{1}}}}{R_{Shunt}}}&
+    \frac{ U_{{2,pp}_{\mathrm{2}}}\ee^{\imag 2 \pi f \Delta t_{2_\mathrm{2}}} }{\frac{\underline{U}_{{E,pp}_{\mathrm{2}}}-\underline{U}_{{2,pp}_{\mathrm{2}}}\ee^{\imag  \omega \Delta {t_2}_{\mathrm{2}}}}{R_{Shunt}}} 
+\end{pmatrix}
+\]
+\[\begin{pmatrix}
+ Z_{11} & Z_{12} \\
+ Z_{21} & Z_{22} \\
+\end{pmatrix}=R_{Shunt}\begin{pmatrix}
+    \frac{U_{{1,pp}_{\mathrm{1}}}\ee^{\imag 2 \pi f \Delta t_{1_\mathrm{1}}} }{\underline{U}_{{E,pp}_{\mathrm{1}}}-\underline{U}_{{1,pp}_{\mathrm{1}}}\ee^{\imag  \omega \Delta {t_1}_{\mathrm{1}}}}&
+    \frac{U_{{1,pp}_{\mathrm{2}}}\ee^{\imag 2 \pi f \Delta t_{1_\mathrm{2}}} }{\underline{U}_{{E,pp}_{\mathrm{2}}}-\underline{U}_{{2,pp}_{\mathrm{2}}}\ee^{\imag  \omega \Delta {t_2}_{\mathrm{2}}}}\\
+    \frac{ U_{{2,pp}_{\mathrm{1}}}\ee^{\imag 2 \pi f \Delta t_{2_\mathrm{1}}} }{\underline{U}_{{E,pp}_{\mathrm{1}}}-\underline{U}_{{1,pp}_{\mathrm{1}}}\ee^{\imag  \omega \Delta {t_1}_{\mathrm{1}}}}&
+    \frac{ U_{{2,pp}_{\mathrm{2}}}\ee^{\imag 2 \pi f \Delta t_{2_\mathrm{2}}} }{\underline{U}_{{E,pp}_{\mathrm{2}}}-\underline{U}_{{2,pp}_{\mathrm{2}}}\ee^{\imag  \omega \Delta {t_2}_{\mathrm{2}}}} 
+\end{pmatrix}
+\]
+\begin{sagesilent}
+import pandas as pd
+import scipy.io
+import numpy as np
+
+mat=scipy.io.loadmat('./Messwerte/ELNW_PR_04_Vorgabe_Messwerte.mat')
+
+mat = {k:v for k, v in mat.items() if k[0] != '_'}
+data = pd.DataFrame({k: np.array(v).flatten() for k, v in mat.items()})
+R_shunt,f,U1pp1,U2pp1,U1pp2,U2pp2,dt11,dt12,dt21,dt22 = var("R_shunt,f,U1pp1,U2pp1,U1pp2,U2pp2,dt11,dt12,dt21,dt22")
+R_shunt=1000
+f=20000
+dt11=data.Z11_dt_U1.squeeze()
+dt12=data.Z12_dt_U1.squeeze()
+dt21=data.Z21_dt_U2.squeeze()
+dt22=data.Z22_dt_U2.squeeze()
+U1pp1=data.Z11_U_1pp.squeeze()*exp(1j*2*pi*f*dt11)
+U2pp1=data.Z21_U_2pp.squeeze()*exp(1j*2*pi*f*dt21)
+U2pp2=data.Z22_U_2pp.squeeze()*exp(1j*2*pi*f*dt22)
+U1pp2=data.Z12_U_1pp.squeeze()*exp(1j*2*pi*f*dt12)
+Z11=U1pp1/(data.Z11_U_Epp.squeeze()-U1pp1)
+Z21=U2pp1/(data.Z21_U_Epp.squeeze()-U1pp1)
+Z12=U1pp2/(data.Z12_U_Epp.squeeze()-U2pp2)
+Z22=U2pp2/(data.Z22_U_Epp.squeeze()-U2pp2)
+\end{sagesilent}
+\[Z=\sage{n(R_shunt*matrix([[Z11,Z12],[Z21,Z22]]))}\]
+
+Da wir wissen, dass unsere Schaltung eine T-Netzwerke ist, können wir versuchen die Impedanzen der T komponenten von der Matrize züruckgewinnen.
+   
+    \[\underline{Z}_1=\underline{Z}_{11}-\underline{Z}_{21}\]
+    \[\underline{Z}_2=\underline{Z}_{22}-\underline{Z}_{21}\]
+    \[\underline{Z}_3=\underline{Z}_{12}=\underline{Z}_{21}\]
+    Da wir wissen, dass unsere Schaltung eine T-Netzwerke ist, können wir versuchen die Impedanzen der T komponenten von der Matrize züruckgewinnen.
+    \begin{figure}[H]
+	\large
+	\begin{tikzpicture}[circuit ee IEC, scale = 1.5]
+	%Erweiterung U2	 Messung    	
+		\draw [circuit symbol unit = 20pt]
+			(7,0) 
+			to[resistor = {info = $R_\mathrm{s}$, info' = \SI{1}{\kilo\ohm}}] (9,0)  	
+			to[voltage source] (9,-2.5)
+			-- (7,-2.5);
+		\draw [blue,-stealth,line width = 2pt] 
+			(9.75,-0.25) -- (9.75,-2.25) node[midway,right]{$\underline{U}_\mathrm{E}$};
+	
+	%Grundschaltung
+		\draw [circuit symbol unit = 20pt]
+			(0,0) 
+			to[resistor = {info = $\underline{Z}_\mathrm{1}$}] (4,0) 
+			to[resistor = {info = $\underline{Z}_\mathrm{2}$}] (6,0) -- (7,0)
+			(3.5,0) to[resistor = {info = $\underline{Z}_\mathrm{3}$}] (3.5,-2.5)
+			-- (0,-2.5) -- (7,-2.5);
+				
+		\draw [fill = white] (0,0) circle (1.5pt)
+		      		      (7,0) circle (1.5pt)
+		      		      (0,-2.5) circle (1.5pt)
+		      		      (7,-2.5) circle (1.5pt);
+		      		      
+		\draw [fill = black] (3.5,0) circle (1.5pt)
+				      (3.5,-2.5) circle (1.5pt);
+				      
+		\draw [blue,-stealth,line width = 2pt] 
+			(0,-0.25) -- (0,-2.25) node[midway,left]{$\underline{U}_\mathrm{1}$};
+		\draw [blue,-stealth,line width = 2pt] 
+			(7,-0.25) -- (7,-2.25) node[midway,right]{$\underline{U}_\mathrm{2}$};
+		
+		\draw [red,stealth-,line width = 2pt]
+			(5.75,0) -- (6.75,0) node[midway,above]{$\underline{I}_\mathrm{2}$};
+	
+	\end{tikzpicture}
+
+  \caption{Schaltbild der T-Netzwerke Zweitor}
+  \label{fig:3_Schaltung}
+\end{figure}
+    \[\underline{Z}_1=\underline{Z}_{11}-\underline{Z}_{21}\]
+    \[\underline{Z}_2=\underline{Z}_{22}-\underline{Z}_{21}\]
+    \[\underline{Z}_3=\underline{Z}_{12}=\underline{Z}_{21}\]
+    \[\underline{Z}_1=\sage{n(R_shunt*(Z11-Z21))}\si{\ohm}\]
+    \[\underline{Z}_2=\sage{n(R_shunt*(Z22-Z21))}\si{\ohm}\]
+    \[\underline{Z}_3=\sage{n(R_shunt*(Z21))}\si{\ohm}\]
+\begin{flushright}  
+\textit{\autorA}
+\end{flushright}
 %
 %------------------------------%
 %------ Ende eures Teils ------%
@@ -30,12 +176,40 @@
 %----- Beginn eures Teils -----%
 %------------------------------%
 %
+Wir wählen eine beliebige Zeitpunkt, womit wir die Admittanzmatrix bestimmen können. Dafür wählen wir eine beliebige index, mit eine Beliebige simulierte Zeitpunkt, wie z.B $t=42,577$.
+Dann füllen wir so eine Tabelle
+\begin{table}[H]
+\begin{tabular}{l|lll|lr} 
+\toprule
+Messung & $t$ in $\si{\micro\second}$ & $u_1(t)$ in $\si{\volt}$ & \textcolor[rgb]{0,0.102,0.118}{\textbf{\textbf{$u_2(t)$~}}}\textcolor[rgb]{0,0.102,0.118}{\textbf{\textbf{in V}}} & \textcolor[rgb]{0,0.102,0.118}{}$i_1(t) $\textcolor[rgb]{0,0.102,0.118}{in mA} & $i_2(t)$\textcolor[rgb]{0,0.102,0.118}{in mA}  \\ 
+\hline 
+\textcolor[rgb]{0,0.102,0.118}{Kurzschluss am Ausgang} & 42{,}5527                                                                                                                                                                          & 4{,}5193                                                                                         & 0                                                                                                                 & 12,1730                                                                        & 25.120080                                      \\
+\textcolor[rgb]{0,0.102,0.118}{Kurzschluss am Eingang} & 42,5527                                                                                                                                                                          & 0                                                                                              & 4,5193                                                                                                            & -3,6102                                                                        & \multicolumn{1}{l}{4,2601}                     \\
+\bottomrule
+\end{tabular}
+\end{table}
 %
-%
-%
-%\begin{flushright}
-%\textit{\autorA}
-%\end{flushright}
+\[
+ \left(
+\begin{array}{cc}
+ Y_{11} & Y_{12} \\
+ Y_{21} & Y_{22} \\
+\end{array}
+\right)=\left(
+\begin{array}{cc}
+ \frac{\text{I}_{1,1}}{U_{1}} & \frac{\text{I}_{1,2}}{U_{2}} \\
+ \frac{\text{I}_{2,1}}{U_{1}} & \frac{\text{I}_{2,2}}{U_{2}} \\
+\end{array}
+\right)\approx \left(
+\begin{array}{cc}
+2,69356 & -0,798841 \\
+ -0,798841 & 0,942845 \\
+\end{array}
+\right) mS 
+\]
+\begin{flushright}
+\textit{\autorA}
+\end{flushright}
 %
 %------------------------------%
 %------ Ende eures Teils ------%
