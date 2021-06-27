@@ -19,7 +19,7 @@
     \item ein Oszilloskop, 
     \item einen Funktionsgenerator, 
     \item ein Steckbrett,
-    \item Steckbrettkabeln
+    \item Drahtbrücken
 \end{itemize}
 
 Zuerst erhalten wir alle Materialien, dann stellen wir sicher, dass wir notieren, welche Pole wir als Tore betrachten. Nachdem wir die Tore ausgewählt haben, zählen wir unsere Pole wie folgt auf: 1,1', 2,2'
@@ -55,18 +55,18 @@ Der Versuch besteht aus zwei Teilen.
 \begin{figure}[H]
     \centering
     \includepdf[pages={1},scale=.8,pagecommand={}]{src/Schaltung4-1.pdf}
-    \caption{LTSpice Simulation 1ste Tor}
+    \caption{LTSpice Simulation erste Tor}
     \label{fig:LTSpice1}
 \end{figure}
 \newpage
 \begin{figure}[H]
     \centering
     \includepdf[pages={2},scale=.8,pagecommand={}]{src/Schaltung4-1.pdf}
-    \caption{LTSpice Simulation 2te Tor}
+    \caption{LTSpice Simulation zweite Tor}
     \label{fig:LTspice2}
 \end{figure}
 \newpage
-Für die Simulation haben wir zwei Schaltungen gebaut, eine für das erste Tor und eine für das zweite Tor, Wir führen eine "Transient" simulation durch, von nur $100\si{\micro\second}$. Um die Spannungen bzw Strome (beispielweise $U_1,I_1$) können wir in LTSpice Maschenregel bzw Knotenregel benutzen, exportieren wir diese Werte, mit denen wir die folgenden Diagramme plotten können
+Für die Simulation haben wir zwei Schaltungen gebaut, eine für das erste Tor und eine für das zweite Tor, Wir führen eine \enquote{Transient} simulation durch, von $100\si{\micro\second}$. Um die Spannungen bzw Strome (beispielweise $U_1,I_1$) können wir in LTSpice Maschenregel bzw Knotenregel benutzen, exportieren wir diese Werte, mit denen wir die folgenden Diagramme plotten können
 \begin{figure}[H]
     \centering
     \includegraphics[clip,trim=20pt 200pt 0 200pt,scale=.8]{src/einausgangU_1.pdf}

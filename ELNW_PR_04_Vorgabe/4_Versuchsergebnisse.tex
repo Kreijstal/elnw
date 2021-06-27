@@ -108,12 +108,12 @@ p=lambda _:sp.latex(sp.sympify(_),decimal_separator="comma")
 \end{sagesilent}
 \[Z=\sage{n(R_shunt*matrix([[Z11,Z12],[Z21,Z22]]))}\]
 
-Da wir wissen, dass unsere Schaltung eine T-Netzwerke ist, können wir versuchen die Impedanzen der T komponenten von der Matrize züruckgewinnen.
+Da wir wissen, dass unsere Schaltung eine T-Netzwerke ist, können wir die Impedanzen der T Komponenten von der Matrix züruckgewinnen.
    
     \[\underline{Z}_1=\underline{Z}_{11}-\underline{Z}_{21}\]
     \[\underline{Z}_2=\underline{Z}_{22}-\underline{Z}_{21}\]
     \[\underline{Z}_3=\underline{Z}_{12}=\underline{Z}_{21}\]
-    Da wir wissen, dass unsere Schaltung eine T-Netzwerke ist, können wir versuchen die Impedanzen der T komponenten von der Matrize züruckgewinnen.
+
     \begin{figure}[H]
 	\large
 	\begin{tikzpicture}[circuit ee IEC, scale = 1.5]
@@ -152,7 +152,7 @@ Da wir wissen, dass unsere Schaltung eine T-Netzwerke ist, können wir versuchen
 	
 	\end{tikzpicture}
 
-  \caption{Schaltbild der T-Netzwerke Zweitor bei Erste versuch}
+  \caption{Schaltbild der T-Netzwerke Zweitor bei ersten Versuch}
   \label{fig:3_Schaltung}
 \end{figure}
     \begin{figure}[H]
@@ -193,7 +193,7 @@ Da wir wissen, dass unsere Schaltung eine T-Netzwerke ist, können wir versuchen
 	
 	\end{tikzpicture}
 
-  \caption{Schaltbild der T-Netzwerke Zweitor bei Zweite versuch}
+  \caption{Schaltbild der T-Netzwerke Zweitor bei Zweiten Versuch}
   \label{fig:3_Schaltung}
 \end{figure}
     \[\underline{Z}_1=\underline{Z}_{11}-\underline{Z}_{21}\]
@@ -219,7 +219,7 @@ Da wir wissen, dass unsere Schaltung eine T-Netzwerke ist, können wir versuchen
 %----- Beginn eures Teils -----%
 %------------------------------%
 %
-Wir wählen eine beliebige Zeitpunkt, womit wir die Admittanzmatrix bestimmen können. Dafür wählen wir eine beliebige index, mit eine Beliebige simulierte Zeitpunkt, wie z.B $t=42,577$.
+Wir wählen eine beliebige Zeitpunkt, womit wir die Admittanzmatrix bestimmen können. Dafür wählen wir eine beliebig Index aus, mit eine beliebige simulierte Zeitpunkt, wie z.B $t=42,577$.
 Dann füllen wir so eine Tabelle
 \begin{table}[H]
 \begin{tabular}{l|lll|lr} 
