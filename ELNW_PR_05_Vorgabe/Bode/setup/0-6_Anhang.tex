@@ -1,0 +1,87 @@
+%--------------------------------------------------------%
+%-------------------- 0-6_Anhang.tex --------------------%
+%--------------------------------------------------------%
+%----- Hier könnt ihr weiterführende Informationen, -----%
+%----- umfangreiche Codelisten, Messdatensammlungen -----%
+%----- oder andere Quellmaterialien einfügen. -----------%
+%--------------------------------------------------------%
+%--------------------------------------------------------%
+%----- Achtung: Fügt bitte ausschließlich Inhalte -------%
+%-----          ein, die wirklich relevant für eure -----%
+%-----          Ausführungen sind! ----------------------%
+%--------------------------------------------------------%
+%--------------------------------------------------------%
+%
+\section{Verwendeter Matlab-Code}
+\label{app:Matlab}
+%
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=3pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,breaklines]{matlab}
+figure(1)
+clf
+hold on
+plot(t1.data(:,1) ,t1.data(:,3))
+plot(t1.data(:,1) ,t1.data(:,2))
+
+%nonsense plot(t1.data(:,1) ,t1.data(:,2))
+title("Eingangs und Ausgangstrome - U_2")
+xlabel("t in s")
+ylabel("U in V")
+yyaxis right
+ylabel("I in A")
+plot(t1.data(:,1) ,t1.data(:,6))
+plot(t1.data(:,1) ,t1.data(:,10))
+legend("U_2" ,"U_1","I_{ein}","I_{aus}")
+grid on
+figure(2)
+clf
+hold on
+plot(t2(:,1) ,t2(:,2))
+plot(t2(:,1) ,t2(:,3))
+
+%nonsense plot(t1.data(:,1) ,t1.data(:,2))
+title("Eingangs und Ausgangstrome - U_1")
+xlabel("t in s")
+ylabel("U in V")
+yyaxis right
+ylabel("I in A")
+plot(t2(:,1) ,t2(:,10))
+plot(t2(:,1) ,t2(:,6))
+legend("U_1","U_2","I_{ein}","I_{aus}")
+grid on
+\end{minted}
+
+%\section{Verwendeter Python-Code}
+%\label{app:Python}
+%\inputminted{python}{src/reader.py}
+%
+%
+%
+% Auch im Anhang sollte die Autorenschaft gekennzeichnet werden. Ihr könnt aber im Falle von Scilab-Code die Autorenschaft im Code selbst kennzeichnen.
+%
+\begin{flushright}
+  \textit{\autorA}
+\end{flushright}
+%
+%
+%
+%\newpage
+%\section{Datenblätter}
+%\label{app:Datenblätter}
+%
+%\lipsum[7-9]
+%
+%
+%
+% Auch wenn es sich nur um Abbildungssammlungen handelt, muss die Autorenschaft trotzdem gekennzeichnet werden.
+%
+%\begin{flushright}
+  %\textit{\autorA}
+%\end{flushright}
+%
+%
+%
