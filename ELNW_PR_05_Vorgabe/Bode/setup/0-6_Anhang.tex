@@ -21,43 +21,40 @@
                gobble=0,
                frame=lines,
                framesep=2mm,breaklines]{matlab}
-figure(1)
+messwerte=load("ELNW_PR05_Vorgabe_Messwerte.mat")
+messwerte.Amplitude=20.*log(messwerte.U_App./messwerte.U_Epp)./log(10)
+messwerte.phi=360.*messwerte.dt.*messwerte.f
+m = readLTspice('labor5_1.txt','bode');
+m2 = readLTspice('labor5_2.txt','bode');
+figure(1)   %Amplitude
 clf
+semilogx(m(:,1), m(:,2),'b')    %Schaltung 1
 hold on
-plot(t1.data(:,1) ,t1.data(:,3))
-plot(t1.data(:,1) ,t1.data(:,2))
-
-%nonsense plot(t1.data(:,1) ,t1.data(:,2))
-title("Eingangs und Ausgangstrome - U_2")
-xlabel("t in s")
-ylabel("U in V")
+semilogx(m2(:,1), m2(:,2),'r')
+semilogx(messwerte.f, messwerte.Amplitude,'g')
+%propertyeditor('on')
+set(gca,'xscale','log')
+ylabel("|H|dB")
 yyaxis right
-ylabel("I in A")
-plot(t1.data(:,1) ,t1.data(:,6))
-plot(t1.data(:,1) ,t1.data(:,10))
-legend("U_2" ,"U_1","I_{ein}","I_{aus}")
+semilogx(0, 0,'--k')
+semilogx(m(:,1), m(:,3),'--b')
+semilogx(m2(:,1), m2(:,3),'--r')
+semilogx(messwerte.f, messwerte.phi,'--g')
+%plot(m(:,1), m(:,3),'r')    
+%plot(m(:,1),20*log10(U_App/U_Epp),'g')
+ylabel({"$\varphi_{\underline H}$ in ${}^{\circ}$"},"interpreter","latex")
+xlabel("Frequenz in Hz")
+title(['Amplitude in dB/Phase in ' char(176)])
+[legh,objh]=legend("Sim R=1M","Sim R=100M","Gemessene","Phase")
+t=(findobj(objh,'type','line'))
+t(7).Color=[0,0,0]
 grid on
-figure(2)
-clf
-hold on
-plot(t2(:,1) ,t2(:,2))
-plot(t2(:,1) ,t2(:,3))
-
-%nonsense plot(t1.data(:,1) ,t1.data(:,2))
-title("Eingangs und Ausgangstrome - U_1")
-xlabel("t in s")
-ylabel("U in V")
-yyaxis right
-ylabel("I in A")
-plot(t2(:,1) ,t2(:,10))
-plot(t2(:,1) ,t2(:,6))
-legend("U_1","U_2","I_{ein}","I_{aus}")
-grid on
+hold off
 \end{minted}
 
-%\section{Verwendeter Python-Code}
-%\label{app:Python}
-%\inputminted{python}{src/reader.py}
+\section{Verwendeter Python-Code}
+\label{app:Python}
+\inputminted{python}{src/test.py}
 %
 %
 %

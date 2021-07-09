@@ -10,6 +10,65 @@
 %----- Beginn eures Teils -----%
 %------------------------------%
 %
+\begin{figure}[H]
+  \Large
+  \centering
+  \begin{tikzpicture}[circuit ee IEC, font = \sffamily]
+    \matrix(M)[
+      matrix of nodes, nodes in empty cells,
+      inner sep = 0pt, outer sep = -.1\pgflinewidth,
+      column sep = 20mm, row sep = 15mm,
+      nodes = {minimum width = 0pt}
+      ]
+    {
+      & & & & & & & \\
+      & & & & & & & \\
+      & & & & & & & \\
+      & & & & & & & \\
+      & & & & & & & \\
+      & & & & & & & \\
+      & & & & & & & \\
+      & & & & & & & \\
+      & & & & & & & \\
+    };
+    %
+    \draw[circuit symbol unit = 15pt]
+      (M-4-2) to [sV] (M-6-2); 
+    \draw[circuit symbol unit = 15pt]
+      (M-2-4) to [capacitor = {info = $C_{1}$, info' = $\SI{1}{\nano\farad }$}] (M-4-4);
+      \draw[circuit symbol unit = 15pt]
+      (M-6-4) to [capacitor = {info = $C_{2}$, info' = $\SI{10}{\nano\farad }$}] (M-8-4);
+    \draw[circuit symbol unit = 15pt]
+      (M-4-4) to [resistor = {info = $R_{2}$, info' = $\SI{100}{\kilo\ohm}$}] (M-6-4);
+    
+    %
+    \draw (M-2-2)--(M-4-2);
+    \draw (M-6-2)--(M-8-2);
+    \draw (M-2-2)--(M-2-4);
+    \draw (M-8-2)--(M-8-4);
+    \draw (M-4-4)--(M-4-6);
+    \draw (M-8-4)--(M-8-6);
+    
+    \draw[fill=black] (M-4-4) circle (2pt);
+    \draw[fill=black] (M-8-4) circle (2pt);
+    \draw[fill=white] (M-4-6) circle (3pt);
+    \draw[fill=white] (M-8-6) circle (3pt);
+    
+    %
+    \draw[UPfeil = 6mm]
+      ([xshift = -8mm]M-2-2.east)--([xshift = -8mm]M-8-2.east)
+      node[midway, left]{$\underline{U}_\mathrm{E}$};
+    \draw[UPfeil = 6mm]
+      ([xshift = 0mm]M-4-6.east)--([xshift = 0mm]M-8-6.east)
+      node[midway, right]{$\underline{U}_\mathrm{A}$};
+    %\draw[IPfeil = 4mm]
+    %  ([xshift = 3mm]M-2-2.center)--([xshift = 3mm]M-2-3.center)
+      %node[midway, above]{$\underline{I}_\mathrm{}$};
+    %
+  \end{tikzpicture}
+  \caption{Ersatzschaltbild des untersuchten Zweitors}
+  \label{fig:schaltung}
+\end{figure}
 \subsubsection{Liste von Bauteile}:
 \begin{itemize}
   \item Funktionsgenerator
@@ -61,7 +120,7 @@ Für die Simulation wir bauen die Schaltung wie wir das im Experiment bauen, jed
   \centering
   \includegraphics[scale=.4]{src/ltspice2.png}
   \caption{LTSpice schaltung}
-  \label{fig:Simulationplot}
+  \label{fig:Schaltung von LTSpice}
 \end{figure}
 %
 %
