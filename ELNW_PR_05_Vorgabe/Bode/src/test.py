@@ -12,4 +12,4 @@ data["dt"]=data.dt*10e6
 
 print(data.reindex(
     columns=['f','U_Epp','U_App','dt','absH','arg'])
-    .to_latex(index=False,header=False,decimal=","))
+    .to_csv(index=False,header=False))
